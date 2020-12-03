@@ -5,14 +5,15 @@ lineReader.eachLine('./2020/01/input.txt', (line, isDone) => {
     numbers.push(parseInt(line, 10));
 
     if(isDone) {
-        numbers.forEach(num1 => {
-            numbers.forEach(num2 => {
-                numbers.forEach(num3 => {
-                    if((num1 + num2 + num3) === 2020) {
-                        console.log(`num1: ${num1} num2: ${num2} num3: ${num3} - Multiplied: ${num1 * num2 * num3}`);
+        for (let i of numbers) {
+            for (let j of numbers) {
+                for (let k of numbers) {
+                    if((i + j + k) === 2020) {
+                        console.log(`${i} + ${j} + ${k} = ${i+j+k}. Multiplied: ${i * j * k}`);
+                        return;
                     }
-                })
-            })
-        })
+                }
+            }
+        }
     }
 });
