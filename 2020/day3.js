@@ -12,7 +12,7 @@ const SQUARE = '.';
     Right 1, down 2 48
 
 */
-const INCREASERS = [
+const slopes = [
     [1,1],
     [3,1],
     [5,1],
@@ -22,22 +22,22 @@ const INCREASERS = [
 
 const sums = [];
 
-INCREASERS.forEach(([ INCREASER_X, INCREASER_Y ], i) => {
+slopes.forEach(([ slopeRight, slopeDown ], i) => {
     let x = 0;
     let y = 0;
     let trees = 0;
     lineReader.eachLine('./2020/day3.txt', (line, isDone) => {
-        if(++y % INCREASER_Y === 0) {
-            x = (x + INCREASER_X) % line.length;
+        if(++y % slopeDown === 0) {
+            x = (x + slopeRight) % line.length;
             if(line.charAt(x) === TREE) {
                 trees++;
             }
         }
 
         if(isDone) {
-            console.log('Amount of trees: ' + trees);
+            console.log('Amount of trees hit: ' + trees);
             sums.push(trees);
-            if(sums.length === INCREASERS.length){
+            if(sums.length === slopes.length){
                 console.log(`All multiplied together: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`)
             }
         }
