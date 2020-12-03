@@ -27,18 +27,19 @@ slopes.forEach(([ slopeRight, slopeDown ], i) => {
     let y = 0;
     let trees = 0;
     lineReader.eachLine('./2020/03/input.txt', (line, isDone) => {
-        if(++y % slopeDown === 0) {
+        if (y > 0 && y % slopeDown === 0) {
             x = (x + slopeRight) % line.length;
-            if(line.charAt(x) === TREE) {
+            if (line.charAt(x) === TREE) {
                 trees++;
             }
         }
+        y++;        
 
-        if(isDone) {
-            console.log('Amount of trees hit: ' + trees);
+        if (isDone) {
+            console.log(`For right ${slopeRight}, down ${slopeDown} we hit ${trees} trees`);
             sums.push(trees);
-            if(sums.length === slopes.length){
-                console.log(`All multiplied together: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`)
+            if (sums.length === slopes.length) {
+                console.log(`All multiplied together: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`);
             }
         }
     });
