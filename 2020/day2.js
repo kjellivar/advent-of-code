@@ -1,4 +1,4 @@
-const lineReader = require('line-reader');
+import lineReader from 'line-reader';
 
 function parseLine(line) { // 2-7 p: pbhhzpmppb
     const [ positions, allowedChar, password ] = line.split(' ');

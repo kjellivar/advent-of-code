@@ -1,4 +1,4 @@
-const lineReader = require('line-reader');
+import lineReader from 'line-reader';
 
 const TREE = '#';
 const SQUARE = '.';

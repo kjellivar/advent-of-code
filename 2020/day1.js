@@ -1,4 +1,5 @@
-const lineReader = require('line-reader');
+import lineReader from 'line-reader';
+
 const numbers = [];
 lineReader.eachLine('./2020/day1.txt', (line, isDone) => {
     numbers.push(parseInt(line, 10));
