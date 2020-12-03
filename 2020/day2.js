@@ -10,7 +10,7 @@ function parseLine(line) { // 2-7 p: pbhhzpmppb
 }
 
 const validations = [];
-const reader = lineReader.eachLine('./2020/day2.txt', (line, isDone) => {
+lineReader.eachLine('./2020/day2.txt', (line, isDone) => {
     const { positions: [pos1, pos2], allowedChar, password } = parseLine(line);
     validations.push(password.charAt(pos1) === allowedChar ^ password.charAt(pos2) === allowedChar)
     if(isDone) {
