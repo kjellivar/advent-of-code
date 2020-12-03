@@ -4,8 +4,8 @@ Running:
 
 ```shell
 $ npm install
-$ node ./[year]/[day].js
+$ node ./[year]/[day]
 
 Example:
-$ node ./2020/day1.js
+$ node ./2020/01
 ```

@@ -26,7 +26,7 @@ slopes.forEach(([ slopeRight, slopeDown ], i) => {
     let x = 0;
     let y = 0;
     let trees = 0;
-    lineReader.eachLine('./2020/day3.txt', (line, isDone) => {
+    lineReader.eachLine('./2020/03/input.txt', (line, isDone) => {
         if(++y % slopeDown === 0) {
             x = (x + slopeRight) % line.length;
             if(line.charAt(x) === TREE) {

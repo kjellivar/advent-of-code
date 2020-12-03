@@ -1,7 +1,7 @@
 import lineReader from 'line-reader';
 
 const numbers = [];
-lineReader.eachLine('./2020/day1.txt', (line, isDone) => {
+lineReader.eachLine('./2020/01/input.txt', (line, isDone) => {
     numbers.push(parseInt(line, 10));
 
     if(isDone) {
