@@ -1,7 +1,7 @@
 function calculateFuel(mass) {
-    let fuel = Math.floor(mass / 3.0) - 2
+    let fuel = Math.floor(mass / 3.0) - 2;
     if (fuel <= 0) {
-        return 0
+        return 0;
     } else {
         return fuel + calculateFuel(fuel);
     }

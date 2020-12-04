@@ -13,16 +13,16 @@ const SQUARE = '.';
 
 */
 const slopes = [
-    [1,1],
-    [3,1],
-    [5,1],
-    [7,1],
-    [1,2]
+    [1, 1],
+    [3, 1],
+    [5, 1],
+    [7, 1],
+    [1, 2],
 ];
 
 const sums = [];
 
-slopes.forEach(([ slopeRight, slopeDown ], i) => {
+slopes.forEach(([slopeRight, slopeDown], i) => {
     let x = 0;
     let y = 0;
     let trees = 0;
@@ -33,15 +33,21 @@ slopes.forEach(([ slopeRight, slopeDown ], i) => {
                 trees++;
             }
         }
-        y++;        
+        y++;
 
         if (isDone) {
-            console.log(`For right ${slopeRight}, down ${slopeDown} we hit ${trees} trees`);
+            console.log(
+                `For right ${slopeRight}, down ${slopeDown} we hit ${trees} trees`,
+            );
             sums.push(trees);
             if (sums.length === slopes.length) {
-                console.log(`All multiplied together: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`);
+                console.log(
+                    `All multiplied together: ${sums.reduce(
+                        (prevVal, curVal) => prevVal * curVal,
+                        1,
+                    )}`,
+                );
             }
         }
     });
 });
-

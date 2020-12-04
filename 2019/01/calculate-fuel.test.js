@@ -1,5 +1,4 @@
-
-import { jest } from '@jest/globals';
+import { describe, it, expect } from '@jest/globals';
 import { calculateFuel } from './calculate-fuel.js';
 
 describe('calculateFuel', () => {
@@ -8,5 +7,5 @@ describe('calculateFuel', () => {
         expect(calculateFuel(1969)).toBe(966);
         expect(calculateFuel(14)).toBe(2);
         expect(calculateFuel(2)).toBe(0);
-    })
-})
+    });
+});

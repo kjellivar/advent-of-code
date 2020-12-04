@@ -5,7 +5,7 @@ function parseHeight(_, originalValue) {
     if (originalValue.includes('in')) {
         // Convert from freedom units to cm
         return num * 2.54;
-    } else if (originalValue.includes('cm'))  {
+    } else if (originalValue.includes('cm')) {
         return num;
     } else {
         return NaN;
@@ -28,9 +28,24 @@ export default yup.object().shape({
     byr: yup.number().required().min(1920).max(2002),
     iyr: yup.number().required().min(2010).max(2020),
     eyr: yup.number().required().min(2020).max(2030),
-    hgt: yup.number().required().transform(parseHeight).round().min(150).max(193),
-    hcl: yup.string().required().matches(/^#[0-9a-f]{6}$/),
-    ecl: yup.string().required().oneOf(['amb','blu','brn','gry','grn','hzl','oth']),
-    pid: yup.string().required().matches(/^\d{9}$/),
-    cid: yup.number()
+    hgt: yup
+        .number()
+        .required()
+        .transform(parseHeight)
+        .round()
+        .min(150)
+        .max(193),
+    hcl: yup
+        .string()
+        .required()
+        .matches(/^#[0-9a-f]{6}$/),
+    ecl: yup
+        .string()
+        .required()
+        .oneOf(['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']),
+    pid: yup
+        .string()
+        .required()
+        .matches(/^\d{9}$/),
+    cid: yup.number(),
 });

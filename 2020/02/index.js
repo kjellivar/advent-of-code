@@ -1,19 +1,28 @@
-import lineReader from 'line-reader';
+import { readInput } from '../../lib/read-input.js';
 
-function parseLine(line) { // 2-7 p: pbhhzpmppb
-    const [ positions, allowedChar, password ] = line.split(' ');
+function parseLine(line) {
+    // 2-7 p: pbhhzpmppb
+    const [positions, allowedChar, password] = line.split(' ');
     return {
-        positions: positions.split('-').map(val => parseInt(val, 10) - 1),
+        positions: positions.split('-').map((val) => parseInt(val, 10) - 1),
         allowedChar: allowedChar.charAt(0),
-        password
+        password,
     };
 }
 
-const validations = [];
-lineReader.eachLine('./2020/02/input.txt', (line, isDone) => {
-    const { positions: [pos1, pos2], allowedChar, password } = parseLine(line);
-    validations.push(password.charAt(pos1) === allowedChar ^ password.charAt(pos2) === allowedChar)
-    if(isDone) {
-        console.log(`Allowed passwords: ${validations.filter(Boolean).length}`);
-    }
-});
+async function part2() {
+    const input = await readInput('2020', '02');
+    const validations = input
+        .map(parseLine)
+        .map(
+            ({ positions: [pos1, pos2], allowedChar, password }) =>
+                (password.charAt(pos1) === allowedChar) ^
+                (password.charAt(pos2) === allowedChar),
+        );
+
+    console.log(
+        `Part 2: Allowed passwords: ${validations.filter(Boolean).length}`,
+    );
+}
+
+part2();
