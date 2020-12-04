@@ -31,5 +31,6 @@ export default yup.object().shape({
     hgt: yup.number().required().transform(parseHeight).round().min(150).max(193),
     hcl: yup.string().required().matches(/^#[0-9a-f]{6}$/),
     ecl: yup.string().required().oneOf(['amb','blu','brn','gry','grn','hzl','oth']),
-    pid: yup.string().required().matches(/^\d{9}$/)
+    pid: yup.string().required().matches(/^\d{9}$/),
+    cid: yup.number()
 });
