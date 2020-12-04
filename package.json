@@ -2,7 +2,7 @@
   "name": "advent-of-code",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./2020/01/index.js",
   "type": "module",
   "engines": {
     "node": ">=14.0.0"
