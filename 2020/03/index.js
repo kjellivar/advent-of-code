@@ -1,53 +1,31 @@
-import lineReader from 'line-reader';
+import { readInput } from '../../lib/read-input.js';
+import { traverse } from './traverse.js';
 
-const TREE = '#';
-const SQUARE = '.';
+const input = readInput('2020', '03');
 
-/*
+async function part1() {
+    const map = await input;
+    console.log(`Part 1: ${traverse(map, 3, 1)}`);
+}
 
-    Right 1, down 1: 90
-    Right 3, down 1: 244
-    Right 5, down 1: 97
-    Right 7, down 1: 92
-    Right 1, down 2 48
+async function part2() {
+    const map = await input;
+    const vectors = [
+        [1, 1],
+        [3, 1],
+        [5, 1],
+        [7, 1],
+        [1, 2],
+    ];
 
-*/
-const slopes = [
-    [1, 1],
-    [3, 1],
-    [5, 1],
-    [7, 1],
-    [1, 2],
-];
+    const sums = vectors.map(([vectorX, vectorY]) =>
+        traverse(map, vectorX, vectorY),
+    );
 
-const sums = [];
+    console.log(
+        `Part 2: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`,
+    );
+}
 
-slopes.forEach(([slopeRight, slopeDown], i) => {
-    let x = 0;
-    let y = 0;
-    let trees = 0;
-    lineReader.eachLine('./2020/03/input.txt', (line, isDone) => {
-        if (y > 0 && y % slopeDown === 0) {
-            x = (x + slopeRight) % line.length;
-            if (line.charAt(x) === TREE) {
-                trees++;
-            }
-        }
-        y++;
-
-        if (isDone) {
-            console.log(
-                `For right ${slopeRight}, down ${slopeDown} we hit ${trees} trees`,
-            );
-            sums.push(trees);
-            if (sums.length === slopes.length) {
-                console.log(
-                    `All multiplied together: ${sums.reduce(
-                        (prevVal, curVal) => prevVal * curVal,
-                        1,
-                    )}`,
-                );
-            }
-        }
-    });
-});
+part1();
+part2();
