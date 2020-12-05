@@ -28,9 +28,9 @@ function validate(passport) {
             2010 <= iyr && iyr <= 2020,
             2020 <= eyr && eyr <= 2030,
             150 <= hgt && hgt <= 193,
-            (hcl.match(/^#[0-9a-f]{6}$/) ?? []).length > 0,
+            /^#[0-9a-f]{6}$/.test(hcl),
             ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl),
-            (pid.match(/^\d{9}$/) ?? []).length > 0,
+            /^\d{9}$/.test(pid),
         ].every((isValid) => isValid);
     } else {
         return false;
