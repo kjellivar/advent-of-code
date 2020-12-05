@@ -31,19 +31,17 @@ function run(memory, noun, verb) {
 }
 
 function part1() {
-    console.log(`Part 1: ${run(input, 12, 2)}`);
+    return run(input, 12, 2);
 }
 
 function part2() {
     for (let i = 0; i < 100; i++) {
         for (let j = 0; j < 100; j++) {
             if (run(input, i, j) === 19690720) {
-                console.log(`Part 2: ${100 * i + j}`);
-                return;
+                return 100 * i + j;
             }
         }
     }
 }
 
-part1();
-part2();
+export { part1, part2 };

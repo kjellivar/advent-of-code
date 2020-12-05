@@ -21,9 +21,7 @@ function part1() {
         },
     );
 
-    console.log(
-        `Part 1: Allowed passwords: ${validations.filter(Boolean).length}`,
-    );
+    return validations.filter(Boolean).length;
 }
 
 function part2() {
@@ -33,10 +31,7 @@ function part2() {
             (password.charAt(pos2 - 1) === allowedChar),
     );
 
-    console.log(
-        `Part 2: Allowed passwords: ${validations.filter(Boolean).length}`,
-    );
+    return validations.filter(Boolean).length;
 }
 
-part1();
-part2();
+export { part1, part2 };

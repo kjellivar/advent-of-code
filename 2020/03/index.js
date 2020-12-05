@@ -4,7 +4,7 @@ import { traverse } from './traverse.js';
 const map = readInput('2020', '03');
 
 function part1() {
-    console.log(`Part 1: ${traverse(map, 3, 1)}`);
+    return traverse(map, 3, 1);
 }
 
 function part2() {
@@ -20,10 +20,7 @@ function part2() {
         traverse(map, vectorX, vectorY),
     );
 
-    console.log(
-        `Part 2: ${sums.reduce((prevVal, curVal) => prevVal * curVal, 1)}`,
-    );
+    return sums.reduce((prevVal, curVal) => prevVal * curVal, 1);
 }
 
-part1();
-part2();
+export { part1, part2, traverse };

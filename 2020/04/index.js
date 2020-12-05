@@ -17,18 +17,15 @@ readInput('2020', '04').forEach((line) => {
 });
 
 function part1() {
-    const valid = passports.filter((pass) =>
+    return passports.filter((pass) =>
         ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every(
             (key) => pass[key],
         ),
-    );
-    console.log(`Part 1: ${valid.length} valid passports`);
+    ).length;
 }
 
 function part2() {
-    const valid = passports.filter((pass) => schema.isValidSync(pass));
-    console.log(`Part 2: ${valid.length} valid passports`);
+    return passports.filter((pass) => schema.isValidSync(pass)).length;
 }
 
-part1();
-part2();
+export { part1, part2 };
