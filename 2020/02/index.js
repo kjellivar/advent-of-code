@@ -29,7 +29,7 @@ function part1() {
 function part2() {
     const validations = input.map(
         ({ positions: [pos1, pos2], allowedChar, password }) =>
-            (password.charAt(pos1 - 1) === allowedChar) ^
+            (password.charAt(pos1 - 1) === allowedChar) !==
             (password.charAt(pos2 - 1) === allowedChar),
     );
 
