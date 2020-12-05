@@ -4,42 +4,42 @@ const LEFT = 'L';
 const RIGHT = 'R';
 
 function getSeatId(boardingPass) {
-    const path = boardingPass.split('');
-    const rowPath = path.slice(0, 7);
-    const columnPath = path.slice(7);
+    const letters = boardingPass.split('');
+    const rows = new Range(0, 127);
+    const seats = new Range(0, 7);
 
-    const row = traverse(new BinaryTreeRangeNode(0, 127), rowPath);
-    const column = traverse(new BinaryTreeRangeNode(0, 7), columnPath);
+    const row = traverse(rows, letters.slice(0, 7));
+    const seat = traverse(seats, letters.slice(7));
 
-    return row * 8 + column;
+    return row * 8 + seat;
 }
 
-function traverse(node, [direction, ...path]) {
+function traverse(range, [direction, ...path]) {
     switch (direction) {
         case FRONT:
         case LEFT:
-            return path.length ? traverse(node.left(), path) : node.min;
+            return path.length ? traverse(range.lowHalf(), path) : range.min;
         case BACK:
         case RIGHT:
-            return path.length ? traverse(node.right(), path) : node.max;
+            return path.length ? traverse(range.highHalf(), path) : range.max;
     }
 }
 
-class BinaryTreeRangeNode {
+class Range {
     constructor(min, max) {
         this.min = min;
         this.max = max;
         this.mid = (max - min) / 2;
     }
 
-    left() {
+    lowHalf() {
         const { min, mid } = this;
-        return new BinaryTreeRangeNode(min, Math.floor(min + mid));
+        return new Range(min, Math.floor(min + mid));
     }
 
-    right() {
+    highHalf() {
         const { min, mid, max } = this;
-        return new BinaryTreeRangeNode(Math.ceil(min + mid), max);
+        return new Range(Math.ceil(min + mid), max);
     }
 }
 
