@@ -5,23 +5,18 @@ const seatIds = readInput('2020', '05')
     .map(getSeatId)
     .sort((a, b) => a - b);
 
+// Part 1
 function lastSeatId() {
     return seatIds[seatIds.length - 1];
 }
 
+// Part 2
 function findMissingSeatId() {
     for (let id = seatIds[0]; id < lastSeatId(); id++) {
-        const lowerId = id - 1;
-        const higherId = id + 1;
-        if (
-            !seatIds.includes(id) &&
-            seatIds.includes(lowerId) &&
-            seatIds.includes(higherId)
-        ) {
+        if (!seatIds.includes(id)) {
             return id;
         }
     }
 }
 
-console.log(`Part 1: Largest seatId is ${lastSeatId()}`);
-console.log(`Part 2: Missing seatId is ${findMissingSeatId()}`);
+export { getSeatId, lastSeatId, findMissingSeatId };
