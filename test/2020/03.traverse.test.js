@@ -1,5 +1,5 @@
-import { describe, it, expect } from '@jest/globals';
-import { traverse } from './traverse';
+import assert from 'assert';
+import { traverse } from '../../2020/03/traverse.js';
 
 const map = [
     '..##.......',
@@ -17,9 +17,9 @@ const map = [
 
 describe('traverse', () => {
     it('should count trees we hit', () => {
-        expect(traverse(map, 3, 1)).toBe(7);
-        expect(traverse(map, 0, 1)).toBe(3);
-        expect(traverse(map, 1, 2)).toBe(2);
-        expect(traverse(map, 5, 1)).toBe(3);
+        assert.strictEqual(traverse(map, 3, 1), 7);
+        assert.strictEqual(traverse(map, 0, 1), 3);
+        assert.strictEqual(traverse(map, 1, 2), 2);
+        assert.strictEqual(traverse(map, 5, 1), 3);
     });
 });
