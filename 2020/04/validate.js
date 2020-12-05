@@ -22,19 +22,15 @@ function validate(passport) {
     const eyr = parseFloat(passport.eyr);
     const hgt = parseHeight(passport.hgt);
 
-    if (byr && ecl && eyr && hcl && hgt && iyr && pid) {
-        return [
-            1920 <= byr && byr <= 2002,
-            2010 <= iyr && iyr <= 2020,
-            2020 <= eyr && eyr <= 2030,
-            150 <= hgt && hgt <= 193,
-            /^#[0-9a-f]{6}$/.test(hcl),
-            ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl),
-            /^\d{9}$/.test(pid),
-        ].every((isValid) => isValid);
-    } else {
-        return false;
-    }
+    return [
+        1920 <= byr && byr <= 2002,
+        2010 <= iyr && iyr <= 2020,
+        2020 <= eyr && eyr <= 2030,
+        150 <= hgt && hgt <= 193,
+        /^#[0-9a-f]{6}$/.test(hcl),
+        ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl),
+        /^\d{9}$/.test(pid),
+    ].every((isValid) => isValid);
 }
 
 /**
