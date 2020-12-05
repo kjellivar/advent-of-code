@@ -1,9 +1,8 @@
 import { readInput } from '../../lib/read-input.js';
 
-const input = readInput('2020', '01').then((lines) => lines.map(Number));
+const numbers = readInput('2020', '01').map(Number);
 
-async function part1() {
-    const numbers = await input;
+function part1() {
     for (const i of numbers) {
         for (const j of numbers) {
             if (i + j === 2020) {
@@ -16,8 +15,7 @@ async function part1() {
     }
 }
 
-async function part2() {
-    const numbers = await input;
+function part2() {
     for (const i of numbers) {
         for (const j of numbers) {
             for (const k of numbers) {

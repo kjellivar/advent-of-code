@@ -3,16 +3,16 @@ import { calculateFuel } from './calculate-fuel.js';
 
 const input = readInput('2019', '01');
 
-async function part1() {
-    const fuel = (await input)
+function part1() {
+    const fuel = input
         .map((line) => Math.floor(parseFloat(line) / 3.0) - 2)
         .reduce((a, b) => a + b);
 
     console.log(`Part 1: Fuel needed is ${fuel}`);
 }
 
-async function part2() {
-    const fuel = (await input)
+function part2() {
+    const fuel = input
         .map((line) => calculateFuel(parseFloat(line)))
         .reduce((a, b) => a + b);
 

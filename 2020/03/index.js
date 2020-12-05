@@ -1,15 +1,13 @@
 import { readInput } from '../../lib/read-input.js';
 import { traverse } from './traverse.js';
 
-const input = readInput('2020', '03');
+const map = readInput('2020', '03');
 
-async function part1() {
-    const map = await input;
+function part1() {
     console.log(`Part 1: ${traverse(map, 3, 1)}`);
 }
 
-async function part2() {
-    const map = await input;
+function part2() {
     const vectors = [
         [1, 1],
         [3, 1],

@@ -10,8 +10,8 @@ function parseLine(line) {
     };
 }
 
-async function part2() {
-    const input = await readInput('2020', '02');
+function part2() {
+    const input = readInput('2020', '02');
     const validations = input
         .map(parseLine)
         .map(
