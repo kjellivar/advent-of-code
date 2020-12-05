@@ -1,3 +1,7 @@
+/**
+ * @param {number} mass
+ * @returns {number} fuel needed for provided mass
+ */
 function calculateFuel(mass) {
     let fuel = Math.floor(mass / 3.0) - 2;
     if (fuel <= 0) {

@@ -3,6 +3,11 @@ const BACK = 'B';
 const LEFT = 'L';
 const RIGHT = 'R';
 
+/**
+ * Returns a seat id given a boarding pass
+ * @param {string} boardingPass - example BBFBFBBLRL
+ * @returns {number} seat id
+ */
 function getSeatId(boardingPass) {
     const letters = boardingPass.split('');
     const rows = new Range(0, 127);
@@ -14,6 +19,10 @@ function getSeatId(boardingPass) {
     return row * 8 + seat;
 }
 
+/**
+ * @param {Range} range
+ * @param {Array<string>} path
+ */
 function traverse(range, [direction, ...path]) {
     switch (direction) {
         case FRONT:
@@ -26,6 +35,10 @@ function traverse(range, [direction, ...path]) {
 }
 
 class Range {
+    /**
+     * @param {number} min
+     * @param {number} max
+     */
     constructor(min, max) {
         this.min = min;
         this.max = max;
