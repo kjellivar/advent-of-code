@@ -16,17 +16,15 @@
  * @returns {boolean} true if passport is valid, false if not
  */
 function validate(passport) {
-    const { ecl, hcl, pid } = passport;
-    const byr = parseFloat(passport.byr);
-    const iyr = parseFloat(passport.iyr);
-    const eyr = parseFloat(passport.eyr);
-    const hgt = parseHeight(passport.hgt);
+    const { byr, iyr, eyr, hgt, hcl, ecl, pid } = passport;
+    const [birthYear, issueYear, expireYear] = [byr, iyr, eyr].map(Number);
+    const height = parseHeight(hgt);
 
     return [
-        1920 <= byr && byr <= 2002,
-        2010 <= iyr && iyr <= 2020,
-        2020 <= eyr && eyr <= 2030,
-        150 <= hgt && hgt <= 193,
+        1920 <= birthYear && birthYear <= 2002,
+        2010 <= issueYear && issueYear <= 2020,
+        2020 <= expireYear && expireYear <= 2030,
+        150 <= height && height <= 193,
         /^#[0-9a-f]{6}$/.test(hcl),
         ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(ecl),
         /^\d{9}$/.test(pid),
