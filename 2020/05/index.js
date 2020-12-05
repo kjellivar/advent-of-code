@@ -9,7 +9,7 @@ function lastSeatId() {
     return seatIds[seatIds.length - 1];
 }
 
-function missingSeatId() {
+function findMissingSeatId() {
     for (let id = seatIds[0]; id < lastSeatId(); id++) {
         const lowerId = id - 1;
         const higherId = id + 1;
@@ -24,4 +24,4 @@ function missingSeatId() {
 }
 
 console.log(`Part 1: Largest seatId is ${lastSeatId()}`);
-console.log(`Part 2: Missing seatId is ${missingSeatId()}`);
+console.log(`Part 2: Missing seatId is ${findMissingSeatId()}`);
