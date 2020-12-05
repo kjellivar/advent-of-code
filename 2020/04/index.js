@@ -1,5 +1,5 @@
 import { readInput } from '../../lib/read-input.js';
-import schema from './schema.js';
+import { validate } from './validate.js';
 
 let passport = {};
 const passports = [];
@@ -25,7 +25,7 @@ function part1() {
 }
 
 function part2() {
-    return passports.filter((pass) => schema.isValidSync(pass)).length;
+    return passports.filter((pass) => validate(pass)).length;
 }
 
 export { part1, part2 };
