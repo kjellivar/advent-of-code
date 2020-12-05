@@ -18,7 +18,7 @@
 function validate(passport) {
     const { byr, iyr, eyr, hgt, hcl, ecl, pid } = passport;
     const [birthYear, issueYear, expireYear] = [byr, iyr, eyr].map(Number);
-    const height = parseHeight(hgt);
+    const height = parseHeight(hgt ?? '');
 
     return [
         1920 <= birthYear && birthYear <= 2002,
@@ -32,15 +32,15 @@ function validate(passport) {
 }
 
 /**
- * @param {string?} value
+ * @param {string} value
  * @returns {number}
  */
 function parseHeight(value) {
     const num = parseFloat(value);
-    if (num && value.includes('in')) {
+    if (value.includes('in')) {
         // Convert from freedom units to cm
         return Math.round(num * 2.54);
-    } else if (num && value.includes('cm')) {
+    } else if (value.includes('cm')) {
         return num;
     } else {
         return NaN;
