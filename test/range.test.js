@@ -3,6 +3,7 @@ import { range } from '../lib/range.js';
 
 describe('range', () => {
     it('should return an array of numbers starting at `from` and ending at `to`', () => {
+        assert.deepStrictEqual(range(0, 2), [0, 1, 2]);
         assert.deepStrictEqual(range(3, 5), [3, 4, 5]);
         assert.deepStrictEqual(range(1, 7), [1, 2, 3, 4, 5, 6, 7]);
         assert.deepStrictEqual(range(1, 1), [1]);
@@ -12,5 +13,6 @@ describe('range', () => {
         assert.deepStrictEqual(range(3, -3), [3, 2, 1, 0, -1, -2, -3]);
         assert.deepStrictEqual(range(-3, -3), [-3]);
         assert.deepStrictEqual(range(-3, -5), [-3, -4, -5]);
+        assert.deepStrictEqual(range(-6, -2), [-6, -5, -4, -3, -2]);
     });
 });
