@@ -1,31 +1,32 @@
-import { readLines } from '../../lib/read-input.js';
+import { readLineGroups } from '../../lib/read-input.js';
 import { validate } from './validate.js';
 
-let passport = {};
-const passports = [];
-readLines('2020', '04').forEach((line) => {
-    if (line) {
-        line.split(' ')
-            .map((val) => val.split(':'))
-            .forEach(([key, val]) => {
-                passport[key] = val;
-            });
-    } else {
-        passports.push(passport);
-        passport = {};
-    }
-});
+/**
+ * @returns Array<Object>
+ */
+function getInput() {
+    return readLineGroups('2020', '04').map(
+        (group) =>
+            new Map(
+                group
+                    .join(' ') // ['hcl:#d257c7 eyr:2036','ecl:grn'] -> 'hcl:#d257c7 eyr:2036 ecl:grn'
+                    .split(' ') // 'hcl:#d257c7 eyr:2036 ecl:grn' -> ['hcl:#d257c7','eyr:2036','ecl:grn']
+                    .map((val) => val.split(':'))
+                    .map(([key, val]) => [key, val]),
+            ),
+    );
+}
 
 function part1() {
-    return passports.filter((pass) =>
-        ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every(
-            (key) => pass[key],
+    return getInput().filter((pass) =>
+        ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every((key) =>
+            pass.get(key),
         ),
     ).length;
 }
 
 function part2() {
-    return passports.filter((pass) => validate(pass)).length;
+    return getInput().filter((pass) => validate(pass)).length;
 }
 
 export { part1, part2 };
