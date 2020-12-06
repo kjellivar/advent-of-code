@@ -83,23 +83,12 @@ describe('2020', () => {
     });
 
     describe('Day 6', () => {
-        const { part1, part2, Group } = day6;
+        const { part1, part2 } = day6;
         it('part1 is 6310', () => {
             assert.strictEqual(part1(), 6310);
         });
         it('part2 is 3193', () => {
             assert.strictEqual(part2(), 3193);
-        });
-        it('Group gives correct answer counts', () => {
-            const group = new Group();
-            group.addPerson(['c', 'b', 'a']);
-            group.addPerson(['c', 'a', 'b']);
-            group.addPerson(['c', 'd', 'a']);
-            group.addPerson(['c', 'a']);
-
-            assert.deepStrictEqual(group.getAnswers(), ['a', 'b', 'c', 'd']);
-
-            assert.deepStrictEqual(group.getCommonAnswers(), ['a', 'c']);
         });
     });
 });
