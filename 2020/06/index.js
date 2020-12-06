@@ -7,13 +7,12 @@ function getInput() {
     return readLineGroups('2020', '06').map((lines) => {
         const allAnswers = lines.join(''); // [abc,def] -> abcdef
         const uniqueAnswers = new Set(allAnswers.split('')); // abcabcde -> Set(a,b,c,d,e)
-        const answerCounts = [...uniqueAnswers].map(
-            (answer) =>
-                (allAnswers.match(new RegExp(answer, 'g')) ?? []).length,
-        );
         return {
             size: lines.length,
-            answerCounts,
+            answerCounts: [...uniqueAnswers].map(
+                (answer) =>
+                    (allAnswers.match(new RegExp(answer, 'g')) ?? []).length,
+            ),
         };
     });
 }
