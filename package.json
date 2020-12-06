@@ -2,13 +2,13 @@
   "name": "advent-of-code",
   "version": "1.0.0",
   "description": "",
-  "main": "./2020/01/index.js",
   "type": "module",
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "mocha"
   },
   "keywords": [
     "advent"

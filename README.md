@@ -32,8 +32,5 @@
 
 ```shell
 $ npm install
-$ node ./[year]/[day]
-
-Example:
-$ node ./2020/01
+$ npm start
 ```
