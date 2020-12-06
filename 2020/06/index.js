@@ -1,20 +1,18 @@
 import { readLineGroups } from '../../lib/read-input.js';
 
 /**
- * @returns {Array<{size: number, answerCounts: Map<string, number>}>}
+ * @returns {Array<{size: number, answerCounts: Array<number>}>}
  */
 function getInput() {
-    return readLineGroups('2020', '06').map((group) => {
-        const answerCounts = new Map();
-        group
-            .join('') // [abc,def] -> abcdef
-            .split('') // abcdef -> [a,b,c,d,e,f]
-            .forEach((letter) =>
-                answerCounts.set(letter, (answerCounts.get(letter) ?? 0) + 1),
-            );
-
+    return readLineGroups('2020', '06').map((lines) => {
+        const allAnswers = lines.join(''); // [abc,def] -> abcdef
+        const uniqueAnswers = new Set(allAnswers.split('')); // abcabcde -> Set(a,b,c,d,e)
+        const answerCounts = [...uniqueAnswers].map(
+            (answer) =>
+                (allAnswers.match(new RegExp(answer, 'g')) ?? []).length,
+        );
         return {
-            size: group.length,
+            size: lines.length,
             answerCounts,
         };
     });
@@ -22,7 +20,7 @@ function getInput() {
 
 function part1() {
     return getInput()
-        .map((group) => [...group.answerCounts.keys()].length)
+        .map((group) => group.answerCounts.length)
         .reduce((a, b) => a + b);
 }
 
@@ -30,9 +28,8 @@ function part2() {
     return getInput()
         .map(
             (group) =>
-                [...group.answerCounts.values()].filter(
-                    (count) => count === group.size,
-                ).length,
+                group.answerCounts.filter((count) => count === group.size)
+                    .length,
         )
         .reduce((a, b) => a + b);
 }
