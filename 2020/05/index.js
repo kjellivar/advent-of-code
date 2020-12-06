@@ -1,3 +1,4 @@
+import { range } from '../../lib/range.js';
 import { readLines } from '../../lib/read-input.js';
 
 const seatIds = readLines('2020', '05')
@@ -11,11 +12,7 @@ function lastSeatId() {
 
 // Part 2
 function findMissingSeatId() {
-    for (let id = seatIds[0]; id < lastSeatId(); id++) {
-        if (!seatIds.includes(id)) {
-            return id;
-        }
-    }
+    return range(seatIds[0], lastSeatId()).find((num, i) => seatIds[i] !== num);
 }
 
 /**
