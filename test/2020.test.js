@@ -4,6 +4,7 @@ import * as day2 from '../2020/02/index.js';
 import * as day3 from '../2020/03/index.js';
 import * as day4 from '../2020/04/index.js';
 import * as day5 from '../2020/05/index.js';
+import * as day6 from '../2020/06/index.js';
 
 describe('2020', () => {
     describe('Day 1', () => {
@@ -78,6 +79,16 @@ describe('2020', () => {
         });
         it('part2 is 685', () => {
             assert.strictEqual(findMissingSeatId(), 685);
+        });
+    });
+
+    describe('Day 6', () => {
+        const { part1, part2 } = day6;
+        it('part1 is 6310', () => {
+            assert.strictEqual(part1(), 6310);
+        });
+        it('part2 is 3193', () => {
+            assert.strictEqual(part2(), 3193);
         });
     });
 });
