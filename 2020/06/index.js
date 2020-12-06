@@ -5,7 +5,7 @@ import { readLineGroups } from '../../lib/read-input.js';
  */
 function getInput() {
     const groups = readLineGroups('2020', '06').map((group) => {
-        const answerCounts = new global.Map();
+        const answerCounts = new Map();
         group
             .join('') // [abc,def] -> abcdef
             .split('') // abcdef -> [a,b,c,d,e,f]
