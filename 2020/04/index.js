@@ -1,9 +1,9 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 import { validate } from './validate.js';
 
 let passport = {};
 const passports = [];
-readInput('2020', '04').forEach((line) => {
+readLines('2020', '04').forEach((line) => {
     if (line) {
         line.split(' ')
             .map((val) => val.split(':'))

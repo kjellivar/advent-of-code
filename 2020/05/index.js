@@ -1,7 +1,7 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 import { getSeatId } from './get-seat-id.js';
 
-const seatIds = readInput('2020', '05')
+const seatIds = readLines('2020', '05')
     .map(getSeatId)
     .sort((a, b) => a - b);
 

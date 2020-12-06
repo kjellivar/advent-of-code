@@ -1,7 +1,7 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 import { calculateFuel } from './calculate-fuel.js';
 
-const input = readInput('2019', '01');
+const input = readLines('2019', '01');
 
 function part1() {
     return input

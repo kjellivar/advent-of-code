@@ -1,7 +1,7 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 import { traverse } from './traverse.js';
 
-const map = readInput('2020', '03');
+const map = readLines('2020', '03');
 
 function part1() {
     return traverse(map, 3, 1);

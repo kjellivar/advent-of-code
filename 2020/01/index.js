@@ -1,6 +1,6 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 
-const numbers = readInput('2020', '01').map(Number);
+const numbers = readLines('2020', '01').map(Number);
 
 function part1() {
     for (const i of numbers) {

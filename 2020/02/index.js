@@ -1,6 +1,6 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 
-const input = readInput('2020', '02').map(parseLine);
+const input = readLines('2020', '02').map(parseLine);
 
 function parseLine(line) {
     // 2-7 p: pbhhzpmppb

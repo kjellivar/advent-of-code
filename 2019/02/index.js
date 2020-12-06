@@ -1,6 +1,6 @@
-import { readInput } from '../../lib/read-input.js';
+import { readLines } from '../../lib/read-input.js';
 
-const [input] = readInput('2019', '02').map((opcodes) =>
+const [input] = readLines('2019', '02').map((opcodes) =>
     opcodes.split(',').map(Number),
 );
 
