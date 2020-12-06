@@ -9,8 +9,8 @@ function getInput() {
         (group) =>
             new Map(
                 group
-                    .join(' ') // ['hcl:#d257c7 eyr:2036','ecl:grn'] -> 'hcl:#d257c7 eyr:2036 ecl:grn'
-                    .split(' ') // 'hcl:#d257c7 eyr:2036 ecl:grn' -> ['hcl:#d257c7','eyr:2036','ecl:grn']
+                    .join(' ') // ['byr:1 eyr:2', 'iyr:3'] -> 'byr:1 eyr:2 iyr:3'
+                    .split(' ') // 'byr:1 eyr:2 iyr:3' -> ['byr:1', 'eyr:2', 'iyr:3']
                     .map((val) => val.split(':'))
                     .map(([key, val]) => [key, val]),
             ),
