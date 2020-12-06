@@ -32,4 +32,4 @@ function part2() {
         .reduce((a, b) => a + b);
 }
 
-export { part1, part2 };
+export { part1, part2, Group };

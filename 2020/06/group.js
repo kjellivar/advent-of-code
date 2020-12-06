@@ -25,13 +25,14 @@ class Group {
     }
 
     getAnswers() {
-        return Array.from(this.answerCounts.keys());
+        return Array.from(this.answerCounts.keys()).sort();
     }
 
     getCommonAnswers() {
-        return Array.from(this.answerCounts.values()).filter(
-            (count) => count === this.size,
-        );
+        return Array.from(this.answerCounts)
+            .map(([letter, count]) => (count === this.size ? letter : null))
+            .filter(Boolean)
+            .sort();
     }
 }
 
