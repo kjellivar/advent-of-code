@@ -1,10 +1,7 @@
 import { readLines } from '../../lib/read-input.js';
 
-/**
- * @returns {Array<[string, Array<{color: string, amount: number}>]>}
- */
-function getInput() {
-    return readLines('2020', '07').map((line) => {
+const children = new Map(
+    readLines('2020', '07').map((line) => {
         const [color, rest] = line.split(' bags contain ');
         const contents = rest
             .split(', ')
@@ -15,48 +12,42 @@ function getInput() {
                 amount: Number(number),
             }));
         return [color, contents];
-    });
-}
+    }),
+);
 
 function part1() {
-    const bags = new Map(getInput());
-    const reverseMap = new Map();
-    for (let [color, contents] of bags) {
-        contents.forEach((content) => {
-            reverseMap.set(
-                content.color,
-                reverseMap.has(content.color)
-                    ? reverseMap.get(content.color).concat(color)
-                    : [color],
-            );
+    const parents = new Map();
+    children.forEach((contents, color) => {
+        contents.forEach((child) => {
+            const bags = parents.get(child.color);
+            parents.set(child.color, (bags ?? []).concat({ color, amount: 1 }));
         });
-    }
+    });
 
-    let bagSet = new Set();
-    const bagQueue = [...reverseMap.get('shiny gold')];
-    while (bagQueue.length) {
-        const color = bagQueue.shift();
-        bagQueue.push(...(reverseMap.get(color) ?? []));
-        bagSet.add(color);
-    }
-    return bagSet.size;
+    return new Set(
+        collectBags(parents.get('shiny gold'), parents).map((bag) => bag.color),
+    ).size;
 }
 
 function part2() {
-    const bags = new Map(getInput());
-    let sum = 0;
-    const bagQueue = [...bags.get('shiny gold')];
-    while (bagQueue.length) {
-        const bag = bagQueue.shift();
-        sum += bag.amount;
-        bagQueue.push(
-            ...bags.get(bag.color).map(({ color, amount }) => ({
-                color,
-                amount: bag.amount * amount,
-            })),
-        );
-    }
-    return sum;
+    return collectBags(children.get('shiny gold'), children)
+        .map((bag) => bag.amount)
+        .reduce((a, b) => a + b);
+}
+
+/**
+ * @param {Array<{amount: number, color: string}>} bags
+ * @param {Map<string, Array<{amount: number, color: string}>>} store
+ * @returns {Array<{amount: number, color: string}>}
+ */
+function collectBags([opened, ...rest], store) {
+    const bags = (store.get(opened.color) ?? [])
+        .map(({ color, amount }) => ({
+            color,
+            amount: opened.amount * amount,
+        }))
+        .concat(rest);
+    return [opened].concat(bags.length ? collectBags(bags, store) : []);
 }
 
 export { part1, part2 };
