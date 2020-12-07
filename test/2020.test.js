@@ -29,7 +29,7 @@ describe('2020', () => {
     });
 
     describe('Day 3', () => {
-        const { part1, part2, traverse } = day3;
+        const { part1, part2, sled } = day3;
         const map = [
             '..##.......',
             '#...#...#..',
@@ -43,11 +43,11 @@ describe('2020', () => {
             '#...##....#',
             '.#..#...#.#',
         ];
-        it('traverse should count trees we hit', () => {
-            assert.strictEqual(traverse(map, 3, 1), 7);
-            assert.strictEqual(traverse(map, 0, 1), 3);
-            assert.strictEqual(traverse(map, 1, 2), 2);
-            assert.strictEqual(traverse(map, 5, 1), 3);
+        it('sled should count trees we hit', () => {
+            assert.strictEqual(sled(map, 3, 1), 7);
+            assert.strictEqual(sled(map, 0, 1), 3);
+            assert.strictEqual(sled(map, 1, 2), 2);
+            assert.strictEqual(sled(map, 5, 1), 3);
         });
         it('part1 is 244', () => {
             assert.strictEqual(part1(), 244);

@@ -1,10 +1,9 @@
 import { readLines } from '../../lib/read-input.js';
-import { traverse } from './traverse.js';
 
 const map = readLines('2020', '03');
 
 function part1() {
-    return traverse(map, 3, 1);
+    return sled(map, 3, 1);
 }
 
 function part2() {
@@ -15,12 +14,28 @@ function part2() {
         [7, 1],
         [1, 2],
     ];
-
     const sums = vectors.map(([vectorX, vectorY]) =>
-        traverse(map, vectorX, vectorY),
+        sled(map, vectorX, vectorY),
     );
-
     return sums.reduce((prevVal, curVal) => prevVal * curVal, 1);
 }
 
-export { part1, part2, traverse };
+/**
+ * @param {Array<string>} map
+ * @param {number} vectorX
+ * @param {number} vectorY
+ * @return {number} trees hit
+ */
+function sled(map, vectorX, vectorY) {
+    let x = 0;
+    let trees = 0;
+    for (let y = vectorY; y < map.length; y += vectorY) {
+        x = (x + vectorX) % map[y].length;
+        if (map[y].charAt(x) === '#') {
+            trees++;
+        }
+    }
+    return trees;
+}
+
+export { part1, part2, sled as sled };
