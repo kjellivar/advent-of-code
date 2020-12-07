@@ -33,12 +33,10 @@ function part1() {
     }
 
     let bagSet = new Set();
-    const bagQueue = reverseMap.get('shiny gold');
+    const bagQueue = [...reverseMap.get('shiny gold')];
     while (bagQueue.length) {
         const color = bagQueue.shift();
-        if (reverseMap.has(color) && !bagSet.has(color)) {
-            bagQueue.push(...reverseMap.get(color));
-        }
+        bagQueue.push(...(reverseMap.get(color) ?? []));
         bagSet.add(color);
     }
     return bagSet.size;
@@ -47,7 +45,7 @@ function part1() {
 function part2() {
     const bags = new Map(getInput());
     let sum = 0;
-    const bagQueue = bags.get('shiny gold');
+    const bagQueue = [...bags.get('shiny gold')];
     while (bagQueue.length) {
         const bag = bagQueue.shift();
         sum += bag.amount;
