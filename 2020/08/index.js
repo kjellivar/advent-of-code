@@ -21,14 +21,14 @@ function part1() {
 function part2() {
     const input = getInput();
     for (let i = 0; i < input.length; i++) {
-        const mem = [...input]; // copy mem
-        const [op, arg] = mem[i];
+        const program = [...input]; // copy mem
+        const [op, arg] = program[i];
         if (op === NOOP) {
-            mem[i] = [JMP, arg];
+            program[i] = [JMP, arg];
         } else if (op == JMP) {
-            mem[i] = [NOOP, arg];
+            program[i] = [NOOP, arg];
         }
-        const [acc, hasTerminated] = run(mem);
+        const [acc, hasTerminated] = run(program);
         if (hasTerminated) {
             return acc;
         }
@@ -36,15 +36,15 @@ function part2() {
 }
 
 /**
- * @param {Array<[string, number]>} mem
+ * @param {Array<[string, number]>} program
  * @returns [number, boolean]
  */
-function run(mem) {
-    const hasRun = Array(mem.length).fill(false);
+function run(program) {
+    const hasRun = Array(program.length).fill(false);
     let pointer = 0;
     let acc = 0;
-    while (!hasRun[pointer] && pointer !== mem.length) {
-        const [op, arg] = mem[pointer];
+    while (!hasRun[pointer] && pointer !== program.length) {
+        const [op, arg] = program[pointer];
         hasRun[pointer] = true;
         switch (op) {
             case ACC:
@@ -59,7 +59,7 @@ function run(mem) {
                 break;
         }
     }
-    return [acc, pointer === mem.length];
+    return [acc, pointer === program.length];
 }
 
 export { part1, part2 };
