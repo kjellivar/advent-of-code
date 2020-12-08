@@ -1,21 +1,18 @@
 import { readLines } from '../../lib/read-input.js';
 
 /**
- * @returns {Array<[string, number]>}
+ * @type {Array<[string, number]>}
  */
-function getInput() {
-    return readLines('2020', '08')
-        .map((line) => line.split(' '))
-        .map(([op, arg]) => [op, Number(arg)]);
-}
+const input = readLines('2020', '08')
+    .map((line) => line.split(' '))
+    .map(([op, arg]) => [op, Number(arg)]);
 
 function part1() {
-    const [acc] = run(getInput());
+    const [acc] = run(input);
     return acc;
 }
 
 function part2() {
-    const input = getInput();
     for (let i = 0; i < input.length; i++) {
         const program = [...input]; // copy mem
         const [op, arg] = program[i];
@@ -31,7 +28,6 @@ function part2() {
 
 /**
  * @param {Array<[string, number]>} program
- * @returns [number, boolean]
  */
 function run(program) {
     const hasRun = Array(program.length).fill(0);
