@@ -34,11 +34,10 @@ function part2() {
  * @returns [number, boolean]
  */
 function run(program) {
-    const hasRun = Array(program.length).fill(false);
+    const hasRun = Array(program.length).fill(0);
     let [pointer, acc] = [0, 0];
-    while (!hasRun[pointer] && pointer !== program.length) {
+    while (!hasRun[pointer]++ && pointer !== program.length) {
         const [op, arg] = program[pointer];
-        hasRun[pointer] = true;
         acc += op == 'acc' ? arg : 0;
         pointer += op == 'jmp' ? arg : 1;
     }
