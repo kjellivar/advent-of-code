@@ -7,6 +7,20 @@ const input = readLines('2020', '08')
     .map((line) => line.split(' '))
     .map(([op, arg]) => [op, Number(arg)]);
 
+/**
+ * @param {Array<[string, number]>} program
+ */
+function run(program) {
+    const hasRun = Array(program.length).fill(0);
+    let [pointer, acc] = [0, 0];
+    while (!hasRun[pointer]++ && pointer !== program.length) {
+        const [op, arg] = program[pointer];
+        acc += op == 'acc' ? arg : 0;
+        pointer += op == 'jmp' ? arg : 1;
+    }
+    return [acc, pointer === program.length];
+}
+
 function part1() {
     const [acc] = run(input);
     return acc;
@@ -24,20 +38,6 @@ function part2() {
             return acc;
         }
     }
-}
-
-/**
- * @param {Array<[string, number]>} program
- */
-function run(program) {
-    const hasRun = Array(program.length).fill(0);
-    let [pointer, acc] = [0, 0];
-    while (!hasRun[pointer]++ && pointer !== program.length) {
-        const [op, arg] = program[pointer];
-        acc += op == 'acc' ? arg : 0;
-        pointer += op == 'jmp' ? arg : 1;
-    }
-    return [acc, pointer === program.length];
 }
 
 export { part1, part2 };
