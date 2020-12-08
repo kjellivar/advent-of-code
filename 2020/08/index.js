@@ -1,9 +1,5 @@
 import { readLines } from '../../lib/read-input.js';
 
-const ACC = 'acc';
-const NOOP = 'nop';
-const JMP = 'jmp';
-
 /**
  * @returns {Array<[string, number]>}
  */
@@ -23,10 +19,8 @@ function part2() {
     for (let i = 0; i < input.length; i++) {
         const program = [...input]; // copy mem
         const [op, arg] = program[i];
-        if (op === NOOP) {
-            program[i] = [JMP, arg];
-        } else if (op == JMP) {
-            program[i] = [NOOP, arg];
+        if (['nop', 'jmp'].includes(op)) {
+            program[i] = [op === 'nop' ? 'jmp' : 'nop', arg];
         }
         const [acc, hasTerminated] = run(program);
         if (hasTerminated) {
@@ -47,14 +41,14 @@ function run(program) {
         const [op, arg] = program[pointer];
         hasRun[pointer] = true;
         switch (op) {
-            case ACC:
+            case 'acc':
                 acc += arg;
                 pointer++;
                 break;
-            case NOOP:
+            case 'nop':
                 pointer++;
                 break;
-            case JMP:
+            case 'jmp':
                 pointer += arg;
                 break;
         }
