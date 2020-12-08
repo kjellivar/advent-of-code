@@ -38,4 +38,4 @@ function sled(map, vectorX, vectorY) {
     return trees;
 }
 
-export { part1, part2, sled as sled };
+export { part1, part2, sled };
