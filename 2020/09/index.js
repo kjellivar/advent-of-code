@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
-const input = readLines('2020', '09').map((line) => Number(line));
+const input = readLines('2020', '09').map(Number);
 
 function part1() {
     const entries = input.slice(25).entries();
