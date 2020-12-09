@@ -2,7 +2,11 @@
     "extends": ["eslint:recommended", "plugin:prettier/recommended"],
     "plugins": ["prettier"],
     "rules": {
-      "prettier/prettier": ["error"]
+        "no-unused-vars": ["error", {
+            "varsIgnorePattern": "^_",
+            "argsIgnorePattern": "^_"
+        }],
+        "prettier/prettier": "error"
     },
     "parserOptions": {
         "ecmaVersion": 12,
