@@ -13,8 +13,8 @@ function part1() {
 }
 
 function part2() {
-    const entries = input.entries();
     const sumToFind = part1();
+    const entries = input.entries();
     for (let [i, sum] of entries) {
         for (let j = i + 1; sum <= sumToFind; sum += input[j++]) {
             if (sum === sumToFind) {
