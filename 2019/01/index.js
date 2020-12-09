@@ -1,17 +1,16 @@
+import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
-const input = readLines('2019', '01');
+const input = readLines('2019', '01').map(parseFloat);
 
 function part1() {
-    return input
-        .map((line) => Math.floor(parseFloat(line) / 3.0) - 2)
-        .reduce((a, b) => a + b);
+    return _(input)
+        .map((num) => Math.floor(num / 3.0) - 2)
+        .sum();
 }
 
 function part2() {
-    return input
-        .map((line) => calculateFuel(parseFloat(line)))
-        .reduce((a, b) => a + b);
+    return _(input).map(calculateFuel).sum();
 }
 
 /**

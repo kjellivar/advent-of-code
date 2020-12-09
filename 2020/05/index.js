@@ -1,4 +1,4 @@
-import { range } from '../../lib/range.js';
+import range from 'lodash/range.js';
 import { readLines } from '../../lib/read-input.js';
 
 const seatIds = readLines('2020', '05')

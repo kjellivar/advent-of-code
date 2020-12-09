@@ -15,7 +15,9 @@
   ],
   "author": "Kjell Ivar Storstein",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
     "eslint": "7.15.0",
     "eslint-config-prettier": "7.0.0",

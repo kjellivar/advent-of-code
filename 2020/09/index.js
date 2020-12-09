@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
 const input = readLines('2020', '09').map((line) => Number(line));
@@ -18,8 +19,8 @@ function part2() {
     for (let [i, sum] of entries) {
         for (let j = i + 1; sum <= sumToFind; sum += input[j++]) {
             if (sum === sumToFind) {
-                const sorted = input.slice(i, j + 1).sort((a, b) => a - b);
-                return sorted.shift() + sorted.pop();
+                const sorted = _(input.slice(i, j + 1)).sortBy();
+                return sorted.first() + sorted.last();
             }
         }
     }

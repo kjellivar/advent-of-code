@@ -1,3 +1,4 @@
+import range from 'lodash/range.js';
 import { readLines } from '../../lib/read-input.js';
 
 const [input] = readLines('2019', '02').map((opcodes) =>
@@ -35,8 +36,8 @@ function part1() {
 }
 
 function part2() {
-    for (let i = 0; i < 100; i++) {
-        for (let j = 0; j < 100; j++) {
+    for (const i of range(0, 100)) {
+        for (const j of range(0, 100)) {
             if (run(input, i, j) === 19690720) {
                 return 100 * i + j;
             }

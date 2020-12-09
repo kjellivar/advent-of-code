@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
 const children = new Map(
@@ -30,9 +31,9 @@ function part1() {
 }
 
 function part2() {
-    return collectBags(children.get('shiny gold'), children)
-        .map((bag) => bag.amount)
-        .reduce((a, b) => a + b);
+    return _(collectBags(children.get('shiny gold'), children))
+        .map('amount')
+        .sum();
 }
 
 /**
