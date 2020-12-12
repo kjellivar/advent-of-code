@@ -1,7 +1,5 @@
-import clamp from 'lodash/clamp.js';
 import { readLines } from '../../lib/read-input.js';
 
-const FLOOR = '.';
 const EMPTY = 'L';
 const OCCUPIED = '#';
 const input = readLines('2020', '11').map((line) => line.split(''));
