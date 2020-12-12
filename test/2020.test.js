@@ -9,6 +9,7 @@ import * as day7 from '../2020/07/index.js';
 import * as day8 from '../2020/08/index.js';
 import * as day9 from '../2020/09/index.js';
 import * as day10 from '../2020/10/index.js';
+import * as day11 from '../2020/11/index.js';
 
 describe('2020', () => {
     describe('Day 1', () => {
@@ -133,6 +134,16 @@ describe('2020', () => {
         });
         it('part2 is 43406276662336', () => {
             assert.strictEqual(part2(), 43406276662336);
+        });
+    });
+
+    describe('Day 11', () => {
+        const { part1, part2 } = day11;
+        it('part1 is 2238', () => {
+            assert.strictEqual(part1(), 2238);
+        });
+        it('part2 is 2013', () => {
+            assert.strictEqual(part2(), 2013);
         });
     });
 });
