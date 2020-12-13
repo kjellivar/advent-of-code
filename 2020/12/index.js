@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
 const input = readLines('2020', '12').map((line) => [

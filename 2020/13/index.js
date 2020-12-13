@@ -1,18 +1,17 @@
-import _ from 'lodash';
 import { readLines } from '../../lib/read-input.js';
 
 const [line1, line2] = readLines('2020', '13');
 
 function part1() {
     const start = Number(line1);
-    let time = start;
     const busLines = line2.split(',').map(Number).filter(Boolean);
-    while (!busLines.some((id) => time % id === 0)) {
-        time++;
+    let time = start;
+    while (time++) {
+        const id = busLines.find((id) => time % id === 0);
+        if (id) {
+            return id * (time - start);
+        }
     }
-    const waitTime = time - start;
-    const id = busLines.find((id) => time % id === 0);
-    return id * waitTime;
 }
 
 function part2() {
