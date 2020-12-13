@@ -23,17 +23,15 @@ function part2() {
     return findEarliestTimestamp(busLines);
 }
 
-function findEarliestTimestamp([[id, offset], ...tails], t = 0, iterator = 1) {
-    const times = [];
-    while (times.length !== 2) {
-        if ((t + offset) % id === 0) {
-            times.push(t);
+function findEarliestTimestamp([[id, offset], ...rest], timeStamp = 0, dt = 1) {
+    const t = [];
+    while (t.length !== 2) {
+        if ((timeStamp + offset) % id === 0) {
+            t.push(timeStamp);
         }
-        t += iterator;
+        timeStamp += dt;
     }
-    return tails.length
-        ? findEarliestTimestamp(tails, times[0], times[1] - times[0])
-        : times[0];
+    return rest.length ? findEarliestTimestamp(rest, t[0], t[1] - t[0]) : t[0];
 }
 
 export { part1, part2 };
