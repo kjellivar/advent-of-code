@@ -1,9 +1,10 @@
-import { readLines } from '../../lib/read-input.js';
+import assert from 'assert';
+import { readLines } from '../lib/read-input.js';
 
 /**
  * @type {Array<[string, number]>}
  */
-const input = readLines('2020', '08')
+const input = readLines(2020, 8)
     .map((line) => line.split(' '))
     .map(([op, arg]) => [op, Number(arg)]);
 
@@ -40,4 +41,11 @@ function part2() {
     }
 }
 
-export { part1, part2 };
+describe('2020 - Day 8', () => {
+    it('part1 is 1915', () => {
+        assert.strictEqual(part1(), 1915);
+    });
+    it('part2 is 944', () => {
+        assert.strictEqual(part2(), 944);
+    });
+});

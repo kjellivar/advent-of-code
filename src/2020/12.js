@@ -1,6 +1,7 @@
-import { readLines } from '../../lib/read-input.js';
+import assert from 'assert';
+import { readLines } from '../lib/read-input.js';
 
-const input = readLines('2020', '12').map((line) => [
+const input = readLines(2020, 12).map((line) => [
     line.charAt(0),
     Number(line.substring(1)),
 ]);
@@ -110,4 +111,11 @@ class VelocityShip {
     }
 }
 
-export { part1, part2 };
+describe('2020 - Day 12', () => {
+    it('part1 is 1177', () => {
+        assert.strictEqual(part1(), 1177);
+    });
+    it('part2 is 46530', () => {
+        assert.strictEqual(part2(), 46530);
+    });
+});

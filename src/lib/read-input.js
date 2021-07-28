@@ -2,8 +2,8 @@ import fs from 'fs';
 
 /**
  * Reads ./year/day/input.txt and returns an array of strings split by line
- * @param {string} year
- * @param {string} day
+ * @param {number} year
+ * @param {number} day
  * @returns {Array<string>}
  */
 export function readLines(year, day) {
@@ -33,8 +33,8 @@ export function readLines(year, day) {
  *      ['moo','shoo']
  * ]
  *
- * @param {string} year
- * @param {string} day
+ * @param {number} year
+ * @param {number} day
  * @returns {Array<Array<string>>}
  */
 export function readLineGroups(year, day) {
@@ -50,16 +50,16 @@ export function readLineGroups(year, day) {
  * Will fallback to look in current directory.
  * This might happen if you're debugging in intellij for instance.
  *
- * @param {string} year
- * @param {string} day
+ * @param {number} year
+ * @param {number} day
  * @returns {string}
  */
 function read(year, day) {
-    const path = `./src/${year}/${day}/input.txt`;
+    const path = `./inputs/${year}/${day}.txt`;
     try {
         return fs.readFileSync(path, 'utf8');
     } catch (e) {
-        const fallback = `./input.txt`;
+        const fallback = './input.txt';
         console.warn(
             `Could not load file at "${path}". Trying fallback at "${fallback}".`,
             e,
