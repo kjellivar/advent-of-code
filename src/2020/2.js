@@ -1,6 +1,7 @@
-import { readLines } from '../../lib/read-input.js';
+import assert from 'assert';
+import { readLines } from '../lib/read-input.js';
 
-const input = readLines('2020', '02').map(parseLine);
+const input = readLines(2020, 2).map(parseLine);
 
 function parseLine(line) {
     // 2-7 p: pbhhzpmppb
@@ -34,4 +35,11 @@ function part2() {
     return validations.filter(Boolean).length;
 }
 
-export { part1, part2 };
+describe('2020 - Day 2', () => {
+    it('part1 is 524', () => {
+        assert.strictEqual(part1(), 524);
+    });
+    it('part2 is 485', () => {
+        assert.strictEqual(part2(), 485);
+    });
+});

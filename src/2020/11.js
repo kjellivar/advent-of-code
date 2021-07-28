@@ -1,8 +1,9 @@
-import { readLines } from '../../lib/read-input.js';
+import assert from 'assert';
+import { readLines } from '../lib/read-input.js';
 
 const EMPTY = 'L';
 const OCCUPIED = '#';
-const input = readLines('2020', '11').map((line) => line.split(''));
+const input = readLines(2020, 11).map((line) => line.split(''));
 
 function part1() {
     let prevSeatings = runSimulation(input);
@@ -108,4 +109,12 @@ function part2() {
     return seatings.flat().filter((s) => s === OCCUPIED).length;
 }
 
-export { part1, part2 };
+// skip until a faster solution is found
+describe.skip('2020 - Day 11', () => {
+    it('part1 is 2238', () => {
+        assert.strictEqual(part1(), 2238);
+    });
+    it('part2 is 2013', () => {
+        assert.strictEqual(part2(), 2013);
+    });
+});

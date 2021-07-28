@@ -7,8 +7,8 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "mocha --timeout 5000",
-    "start": "mocha"
+    "test": "mocha --timeout 5000 --recursive \"./src\"",
+    "start": "npm run test"
   },
   "keywords": [
     "advent"

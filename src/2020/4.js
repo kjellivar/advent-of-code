@@ -1,3 +1,22 @@
+import assert from 'assert';
+import { readLineGroups } from '../lib/read-input.js';
+
+/**
+ * @returns Array<Object>
+ */
+function getInput() {
+    return readLineGroups(2020, 4).map(
+        (group) =>
+            new Map(
+                group
+                    .join(' ') // ['byr:1 eyr:2', 'iyr:3'] -> 'byr:1 eyr:2 iyr:3'
+                    .split(' ') // 'byr:1 eyr:2 iyr:3' -> ['byr:1', 'eyr:2', 'iyr:3']
+                    .map((val) => val.split(':'))
+                    .map(([key, val]) => [key, val]),
+            ),
+    );
+}
+
 /**
  * @param {Map<string, string>} passport
  * @returns {boolean} true if passport is valid, false if not
@@ -39,4 +58,23 @@ function parseHeight(value) {
     }
 }
 
-export { validate };
+function part1() {
+    return getInput().filter((pass) =>
+        ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every((key) =>
+            pass.get(key),
+        ),
+    ).length;
+}
+
+function part2() {
+    return getInput().filter((pass) => validate(pass)).length;
+}
+
+describe('2020 - Day 4', () => {
+    it('part1 is 190', () => {
+        assert.strictEqual(part1(), 190);
+    });
+    it('part2 is 121', () => {
+        assert.strictEqual(part2(), 121);
+    });
+});
