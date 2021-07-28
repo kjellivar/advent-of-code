@@ -55,7 +55,7 @@ export function readLineGroups(year, day) {
  * @returns {string}
  */
 function read(year, day) {
-    const path = `./inputs/${year}/${day}.txt`;
+    const path = `./inputs/${year}/${String(day).padStart(2, '0')}.txt`;
     try {
         return fs.readFileSync(path, 'utf8');
     } catch (e) {
