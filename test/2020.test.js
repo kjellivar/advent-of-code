@@ -140,8 +140,8 @@ describe('2020', () => {
         });
     });
 
-    /* commented out until a faster solution is found
-    describe('Day 11', () => {
+    // skip until a faster solution is found
+    describe.skip('Day 11', () => {
         const { part1, part2 } = day11;
         it('part1 is 2238', () => {
             assert.strictEqual(part1(), 2238);
@@ -150,7 +150,6 @@ describe('2020', () => {
             assert.strictEqual(part2(), 2013);
         });
     });
-    */
 
     describe('Day 12', () => {
         const { part1, part2 } = day12;
