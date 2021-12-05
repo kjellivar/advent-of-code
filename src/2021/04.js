@@ -17,15 +17,10 @@ class Board {
         if (this.completed) {
             return false;
         }
-        const columnWins =
-            this.columns.filter((col) =>
-                col.every((val) => drawnNumbers.includes(val)),
+        this.completed =
+            [...this.columns, ...this.rows].filter((line) =>
+                line.every((num) => drawnNumbers.includes(num)),
             ).length > 0;
-        const rowWins =
-            this.rows.filter((row) =>
-                row.every((val) => drawnNumbers.includes(val)),
-            ).length > 0;
-        this.completed = columnWins || rowWins;
         return this.completed;
     }
 
@@ -46,7 +41,7 @@ const boardsInput = input
     );
 
 function playBingo() {
-    const boards = boardsInput.map((val) => new Board(val));
+    const boards = boardsInput.map((board) => new Board(board));
     const drawOrder = input.slice(0, 1)[0][0].split(',').map(Number);
     const draws = [];
     const wins = [];
