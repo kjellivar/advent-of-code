@@ -6,11 +6,7 @@ const input = readLines(2021, 3);
 function splitLeastAndMostCommonBits(list, pos) {
     const ones = list.filter((val) => val.charAt(pos) === '1');
     const zeros = list.filter((val) => val.charAt(pos) === '0');
-    if (ones.length >= zeros.length) {
-        return [zeros, ones];
-    } else {
-        return [ones, zeros];
-    }
+    return ones.length >= zeros.length ? [zeros, ones] : [ones, zeros];
 }
 
 function part1() {
@@ -28,10 +24,9 @@ function part1() {
 function part2() {
     let [co2, oxygen] = splitLeastAndMostCommonBits(input, 0);
     for (let i = 1; co2.length > 1 || oxygen.length > 1; i++) {
-        const [least] = splitLeastAndMostCommonBits(co2, i);
-        const [_, most] = splitLeastAndMostCommonBits(oxygen, i);
-        co2 = co2.length > 1 ? least : co2;
-        oxygen = oxygen.length > 1 ? most : oxygen;
+        if (co2.length > 1) [co2] = splitLeastAndMostCommonBits(co2, i);
+        if (oxygen.length > 1)
+            [, oxygen] = splitLeastAndMostCommonBits(oxygen, i);
     }
     return Number(`0b${co2[0]}`) * Number(`0b${oxygen[0]}`);
 }
