@@ -6,6 +6,16 @@ const FILE_PATH = new URL('', import.meta.url).pathname.split('/');
 const YEAR = parseInt(FILE_PATH[FILE_PATH.length - 2]);
 const DAY = parseInt(FILE_PATH[FILE_PATH.length - 1]);
 
+const input = readLineGroups(YEAR, DAY);
+const drawOrder = input[0][0].split(',').map(Number);
+const boardsInput = input
+    .slice(1)
+    .map((val) =>
+        val.map((val) =>
+            val.trim().replace(/\s+/g, ',').split(',').map(Number),
+        ),
+    );
+
 class Board {
     constructor(board) {
         this.completed = false;
@@ -31,34 +41,22 @@ class Board {
     }
 }
 
-const input = readLineGroups(YEAR, DAY);
-const boardsInput = input
-    .slice(1)
-    .map((val) =>
-        val.map((val) =>
-            val.trim().replace(/\s+/g, ',').split(',').map(Number),
-        ),
-    );
-
 function playBingo() {
     const boards = boardsInput.map((board) => new Board(board));
-    const drawOrder = input.slice(0, 1)[0][0].split(',').map(Number);
     const draws = [];
     const wins = [];
-    while (drawOrder.length) {
-        const draw = drawOrder.shift();
+    drawOrder.forEach((draw) => {
         draws.push(draw);
-        for (const board of boards) {
-            const win = board.checkWin(draws);
-            if (win) {
+        boards.forEach((board) => {
+            if (board.checkWin(draws)) {
                 wins.push(
                     board
                         .getUnmarkedNumbers(draws)
                         .reduce((prev, val) => prev + val) * draw,
                 );
             }
-        }
-    }
+        });
+    });
     return wins;
 }
 
