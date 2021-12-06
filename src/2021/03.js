@@ -12,8 +12,8 @@ function splitLeastAndMostCommonBits(list, pos) {
 function part1() {
     let mostCommonBits = '0b';
     let leastCommonBits = '0b';
-    const length = input[0].length;
-    for (let i = 0; i < length; i++) {
+    const bitLength = input[0].length;
+    for (let i = 0; i < bitLength; i++) {
         const [least, most] = splitLeastAndMostCommonBits(input, i);
         mostCommonBits += most[0].charAt(i);
         leastCommonBits += least[0].charAt(i);
