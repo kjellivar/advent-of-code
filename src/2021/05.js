@@ -3,13 +3,9 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 import { LineSegment } from '../lib/line-segment.js';
 
-const input = lodash(
-    readLines(2021, 5)
-        .map((l) =>
-            l.split(' -> ').map((coords) => coords.split(',').map(Number)),
-        )
-        .map((line) => new LineSegment(line)),
-);
+const input = lodash(readLines(2021, 5))
+    .map((l) => l.split(' -> ').map((coords) => coords.split(',').map(Number)))
+    .map((line) => new LineSegment(line));
 
 function part1() {
     return solve((line) => line.isHorizontal() || line.isVertical());

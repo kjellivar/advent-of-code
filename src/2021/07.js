@@ -1,8 +1,8 @@
 import assert from 'assert';
 import lodash from 'lodash';
-import range from 'lodash/range.js';
 import { readLines } from '../lib/read-input.js';
 
+const { range } = lodash;
 const crabs = lodash(readLines(2021, 7))
     .flatMap((val) => val.split(','))
     .map(Number)

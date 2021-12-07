@@ -2,6 +2,7 @@ import assert from 'assert';
 import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
+const { fill, times, sum } = lodash;
 const input = readLines(2021, 6).flatMap((val) => val.split(',').map(Number));
 
 function part1() {
@@ -13,14 +14,14 @@ function part2() {
 }
 
 function simulate(days) {
-    const fishes = lodash.fill(Array(9), 0);
+    const fishes = fill(Array(9), 0);
     input.forEach((i) => fishes[i]++);
-    lodash.times(days, () => {
+    times(days, () => {
         const births = fishes.shift();
         fishes.push(births);
         fishes[6] += births;
     });
-    return lodash.sum(fishes);
+    return sum(fishes);
 }
 
 describe('2021 - Day 6', () => {
