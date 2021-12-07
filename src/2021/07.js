@@ -2,11 +2,13 @@ import assert from 'assert';
 import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const { range } = lodash;
 const crabs = lodash(readLines(2021, 7))
     .flatMap((val) => val.split(','))
     .map(Number)
     .sortBy();
+
+// Calculate triangular number
+const fuelCost = (n) => (n * (n + 1)) / 2;
 
 function part1() {
     const to = crabs.get(crabs.size() / 2);
@@ -14,10 +16,9 @@ function part1() {
 }
 
 function part2() {
-    const fuelCost = range(crabs.last()).map((n) => (n * (n + 1)) / 2);
-    const positions = range(crabs.first(), crabs.last());
-    return lodash(positions)
-        .map((to) => crabs.map((from) => fuelCost[Math.abs(from - to)]).sum())
+    const avg = crabs.sum() / crabs.size();
+    return lodash([Math.floor(avg), Math.ceil(avg)])
+        .map((to) => crabs.map((from) => fuelCost(Math.abs(from - to))).sum())
         .min();
 }
 
