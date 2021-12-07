@@ -13,17 +13,13 @@ function part2() {
 }
 
 function simulate(days) {
-    const counts = lodash(input.slice()).countBy().value();
-    lodash
-        .range(0, 9)
-        .map(String)
-        .forEach((val) => (counts[val] = counts[val] ?? 0));
-    const fishes = lodash(counts).toArray().value();
-    for (let day = 0; day < days; day++) {
+    const fishes = lodash.fill(Array(9), 0);
+    input.forEach((i) => fishes[i]++);
+    lodash.times(days, () => {
         const births = fishes.shift();
         fishes.push(births);
         fishes[6] += births;
-    }
+    });
     return fishes.reduce((a, b) => a + b);
 }
 
