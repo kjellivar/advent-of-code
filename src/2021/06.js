@@ -20,7 +20,7 @@ function simulate(days) {
         fishes.push(births);
         fishes[6] += births;
     });
-    return fishes.reduce((a, b) => a + b);
+    return lodash.sum(fishes);
 }
 
 describe('2021 - Day 6', () => {
