@@ -1,15 +1,10 @@
-import { URL } from 'url';
 import assert from 'assert';
 import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 import { LineSegment } from '../lib/line-segment.js';
 
-const FILE_PATH = new URL('', import.meta.url).pathname.split('/');
-const YEAR = parseInt(FILE_PATH[FILE_PATH.length - 2]);
-const DAY = parseInt(FILE_PATH[FILE_PATH.length - 1]);
-
 const input = lodash(
-    readLines(YEAR, DAY)
+    readLines(2021, 5)
         .map((l) =>
             l.split(' -> ').map((coords) => coords.split(',').map(Number)),
         )
@@ -34,7 +29,7 @@ function solve(filter = () => true) {
         .size();
 }
 
-describe(`${YEAR} - Day ${DAY}`, () => {
+describe(`2021 - Day 5`, () => {
     it('part1 is 6666', () => {
         assert.strictEqual(part1(), 6666);
     });

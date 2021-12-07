@@ -1,13 +1,8 @@
-import { URL } from 'url';
 import assert from 'assert';
 import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const FILE_PATH = new URL('', import.meta.url).pathname.split('/');
-const YEAR = parseInt(FILE_PATH[FILE_PATH.length - 2]);
-const DAY = parseInt(FILE_PATH[FILE_PATH.length - 1]);
-
-const input = readLines(YEAR, DAY).flatMap((val) => val.split(',').map(Number));
+const input = readLines(2021, 6).flatMap((val) => val.split(',').map(Number));
 
 function part1() {
     return simulate(80);
@@ -32,7 +27,7 @@ function simulate(days) {
     return fishes.reduce((a, b) => a + b);
 }
 
-describe(`${YEAR} - Day ${DAY}`, () => {
+describe(`2021 - Day 6`, () => {
     it('part1 is 380612', () => {
         assert.strictEqual(part1(), 380612);
     });

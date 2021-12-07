@@ -1,12 +1,7 @@
-import { URL } from 'url';
 import assert from 'assert';
 import { readLineGroups } from '../lib/read-input.js';
 
-const FILE_PATH = new URL('', import.meta.url).pathname.split('/');
-const YEAR = parseInt(FILE_PATH[FILE_PATH.length - 2]);
-const DAY = parseInt(FILE_PATH[FILE_PATH.length - 1]);
-
-const input = readLineGroups(YEAR, DAY);
+const input = readLineGroups(2021, 4);
 const drawOrder = input[0][0].split(',').map(Number);
 const boardsInput = input
     .slice(1)
@@ -68,7 +63,7 @@ function part2() {
     return playBingo().pop();
 }
 
-describe(`${YEAR} - Day ${DAY}`, () => {
+describe(`2021 - Day 4`, () => {
     it('part1 is 6592', () => {
         assert.strictEqual(part1(), 6592);
     });
