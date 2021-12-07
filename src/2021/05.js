@@ -29,7 +29,7 @@ function solve(filter = () => true) {
         .size();
 }
 
-describe(`2021 - Day 5`, () => {
+describe('2021 - Day 5', () => {
     it('part1 is 6666', () => {
         assert.strictEqual(part1(), 6666);
     });

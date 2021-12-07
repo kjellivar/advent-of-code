@@ -27,7 +27,7 @@ function simulate(days) {
     return fishes.reduce((a, b) => a + b);
 }
 
-describe(`2021 - Day 6`, () => {
+describe('2021 - Day 6', () => {
     it('part1 is 380612', () => {
         assert.strictEqual(part1(), 380612);
     });
