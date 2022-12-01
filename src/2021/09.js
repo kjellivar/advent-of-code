@@ -33,6 +33,7 @@ function getLowPoints() {
     );
 }
 
+// eslint-disable-next-line no-unused-vars
 function getHighPoints() {
     return input.map((row) => row.map((height) => (height === 9 ? 'X' : '.')));
 }
