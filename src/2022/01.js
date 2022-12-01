@@ -2,20 +2,17 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLineGroups } from '../lib/read-input.js';
 
-const inventories = readLineGroups(2022, 1).map((inv) => inv.map(Number));
+const cals = _(readLineGroups(2022, 1))
+    .map((inv) => inv.map(Number)) // cast string -> number
+    .map((inv) => _(inv).sum()) // sum each elf inventory
+    .sortBy(); // sort sums
 
 function part1() {
-    const sums = inventories.map((inv) => _(inv).sum());
-    return _(sums).max();
+    return cals.last();
 }
 
 function part2() {
-    const sums = _(inventories)
-        .map((inv) => _(inv).sum())
-        .sortBy()
-        .value()
-        .reverse();
-    return sums[0] + sums[1] + sums[2];
+    return cals.takeRight(3).sum();
 }
 
 describe('2022 - Day 1', () => {
