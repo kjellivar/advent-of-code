@@ -31,14 +31,11 @@ function part1() {
 function part2() {
     return rounds
         .map(([move, tactic]) => {
-            let response;
+            let response = move; // draw
             if (tactic === 1) {
                 // lose
                 response = whatLosesTo.get(move);
-            } else if (tactic === 2) {
-                // draw
-                response = move;
-            } else {
+            } else if (tactic === 3) {
                 // win
                 response = [1, 2, 3].find((x) => whatLosesTo.get(x) === move);
             }
