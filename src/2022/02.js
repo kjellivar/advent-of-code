@@ -9,9 +9,9 @@ const rounds = _(
 );
 
 const whatLosesTo = new Map([
-    [1, 3], // 1 beats 3
-    [2, 1], // 2 beats 1
-    [3, 2], // 3 beats 2
+    [1, 3], // 1(rock) beats 3(scissors)
+    [2, 1], // 2(paper) beats 1(rock)
+    [3, 2], // 3(scissors) beats 2(paper)
 ]);
 
 function score([move, response]) {
