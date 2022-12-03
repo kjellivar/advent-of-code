@@ -17,9 +17,18 @@ try {
     );
     const jsPath = `./src/${year}/${day}.js`;
     fs.copyFileSync('./template.js', jsPath);
+    fs.appendFileSync(
+        jsPath,
+        `
+test('${year} - Day ${day}', () => {
+    assert.strictEqual(part1(), undefined);
+    assert.strictEqual(part2(), undefined);
+});
+`,
+    );
     console.log(`Created file: ${jsPath}`);
     const inputPath = `./inputs/${year}/${day}.txt`;
-    fs.closeSync(fs.openSync(`./inputs/${year}/${day}.txt`, 'w'));
+    fs.closeSync(fs.openSync(inputPath, 'w'));
     console.log(`Created file: ${inputPath}`);
 } catch (e) {
     console.error(`error: ${e.message}`);
