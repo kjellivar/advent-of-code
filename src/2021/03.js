@@ -31,7 +31,7 @@ function part2() {
     return Number(`0b${co2[0]}`) * Number(`0b${oxygen[0]}`);
 }
 
-test('2021 - Day 3', () => {
+test('2021 - Day 03', () => {
     assert.strictEqual(part1(), 3912944);
     assert.strictEqual(part2(), 4996233);
 });

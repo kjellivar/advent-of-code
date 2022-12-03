@@ -53,7 +53,7 @@ function findSuperSetNumber(list, length, common, filter = () => true) {
         );
 }
 
-test(`2021 - Day 8`, () => {
+test(`2021 - Day 08`, () => {
     assert.strictEqual(part1(), 349);
     assert.strictEqual(part2(), 1070957);
 });

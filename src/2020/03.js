@@ -39,7 +39,7 @@ function sled(map, vectorX, vectorY) {
     return trees;
 }
 
-test('2020 - Day 3', () => {
+test('2020 - Day 03', () => {
     assert.strictEqual(part1(), 244);
     assert.strictEqual(part2(), 9406609920);
 });

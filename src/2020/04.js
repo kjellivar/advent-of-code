@@ -70,7 +70,7 @@ function part2() {
     return getInput().filter((pass) => validate(pass)).length;
 }
 
-test('2020 - Day 4', () => {
+test('2020 - Day 04', () => {
     assert.strictEqual(part1(), 190);
     assert.strictEqual(part2(), 121);
 });

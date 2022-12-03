@@ -45,7 +45,7 @@ function part2() {
     return depth * horizontal;
 }
 
-test('2021 - Day 2', () => {
+test('2021 - Day 02', () => {
     assert.strictEqual(part1(), 1654760);
     assert.strictEqual(part2(), 1956047400);
 });

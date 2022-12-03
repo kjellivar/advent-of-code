@@ -23,7 +23,7 @@ function part2() {
     return increases;
 }
 
-test('2021 - Day 1', () => {
+test('2021 - Day 01', () => {
     assert.strictEqual(part1(), 1832);
     assert.strictEqual(part2(), 1858);
 });

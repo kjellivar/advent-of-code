@@ -24,7 +24,7 @@ function simulate(days) {
     return sum(fishes);
 }
 
-test('2021 - Day 6', () => {
+test('2021 - Day 06', () => {
     assert.strictEqual(part1(), 380612);
     assert.strictEqual(part2(), 1710166656900);
 });

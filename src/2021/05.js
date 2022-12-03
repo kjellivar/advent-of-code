@@ -25,7 +25,7 @@ function solve(filter = () => true) {
         .size();
 }
 
-test('2021 - Day 5', () => {
+test('2021 - Day 05', () => {
     assert.strictEqual(part1(), 6666);
     assert.strictEqual(part2(), 19081);
 });

@@ -35,7 +35,7 @@ function part2() {
     return validations.filter(Boolean).length;
 }
 
-test('2020 - Day 2', () => {
+test('2020 - Day 02', () => {
     assert.strictEqual(part1(), 524);
     assert.strictEqual(part2(), 485);
 });

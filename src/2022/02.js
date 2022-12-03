@@ -40,7 +40,7 @@ const part2 = rounds
     })
     .sum();
 
-test('2022 - Day 2', () => {
+test('2022 - Day 02', () => {
     assert.strictEqual(part1, 9651);
     assert.strictEqual(part2, 10560);
 });

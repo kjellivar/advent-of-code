@@ -27,7 +27,7 @@ function getSeatId(boardingPass) {
     return parseInt(binary, 2);
 }
 
-test('2020 - Day 5', () => {
+test('2020 - Day 05', () => {
     assert.strictEqual(lastSeatId(), 976);
     assert.strictEqual(findMissingSeatId(), 685);
 });

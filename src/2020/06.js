@@ -24,7 +24,7 @@ function part2() {
     return getInput().sum();
 }
 
-test('2020 - Day 6', () => {
+test('2020 - Day 06', () => {
     assert.strictEqual(part1(), 6310);
     assert.strictEqual(part2(), 3193);
 });

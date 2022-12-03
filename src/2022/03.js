@@ -16,7 +16,7 @@ const part1 = input
 
 const part2 = input.chunk(3).flatMap(priorities).sum();
 
-test(`2022 - Day 3`, () => {
+test(`2022 - Day 03`, () => {
     assert.strictEqual(part1, 7763);
     assert.strictEqual(part2, 2569);
 });

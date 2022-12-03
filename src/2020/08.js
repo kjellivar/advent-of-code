@@ -41,7 +41,7 @@ function part2() {
     }
 }
 
-test('2020 - Day 8', () => {
+test('2020 - Day 08', () => {
     assert.strictEqual(part1(), 1915);
     assert.strictEqual(part2(), 944);
 });

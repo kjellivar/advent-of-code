@@ -36,7 +36,7 @@ function hasSum(arr, sumToFind) {
     return false;
 }
 
-test('2020 - Day 9', () => {
+test('2020 - Day 09', () => {
     assert.strictEqual(part1(), 23278925);
     assert.strictEqual(part2(), 4011064);
 });

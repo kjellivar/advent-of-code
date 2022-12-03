@@ -22,7 +22,7 @@ function part2() {
         .min();
 }
 
-test(`2021 - Day 7`, () => {
+test(`2021 - Day 07`, () => {
     assert.strictEqual(part1(), 342730);
     assert.strictEqual(part2(), 92335207);
 });

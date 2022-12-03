@@ -48,7 +48,7 @@ function part2() {
     // terminate when height 9
 }
 
-test(`2021 - Day 9`, () => {
+test(`2021 - Day 09`, () => {
     assert.strictEqual(part1(), 436);
     assert.strictEqual(part2(), undefined);
 });

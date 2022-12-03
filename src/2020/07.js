@@ -52,7 +52,7 @@ function collectBags([opened, ...rest], store) {
     return [opened].concat(bags.length ? collectBags(bags, store) : []);
 }
 
-test('2020 - Day 7', () => {
+test('2020 - Day 07', () => {
     assert.strictEqual(part1(), 213);
     assert.strictEqual(part2(), 38426);
 });

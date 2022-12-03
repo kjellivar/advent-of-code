@@ -63,7 +63,7 @@ function part2() {
     return playBingo().pop();
 }
 
-test('2021 - Day 4', () => {
+test('2021 - Day 04', () => {
     assert.strictEqual(part1(), 6592);
     assert.strictEqual(part2(), 31755);
 });

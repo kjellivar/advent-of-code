@@ -23,7 +23,7 @@ function calculateFuel(mass) {
     return fuel > 0 ? fuel + calculateFuel(fuel) : 0;
 }
 
-test('2019 - Day 1', () => {
+test('2019 - Day 01', () => {
     assert.strictEqual(part1(), 3394106);
     assert.strictEqual(part2(), 5088280);
 });
