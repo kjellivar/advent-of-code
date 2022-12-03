@@ -5,8 +5,8 @@ import { readLines } from '../lib/read-input.js';
 const input = _(readLines().map((line) => line.split('')));
 
 const priorities = (arrs) =>
-    _.uniq(_.intersection(...arrs)).map((char) =>
-        char.match(/[a-z]/) ? char.charCodeAt() - 96 : char.charCodeAt() - 38,
+    _.uniq(_.intersection(...arrs)).map((c) =>
+        '_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(c),
     );
 
 const part1 = input
