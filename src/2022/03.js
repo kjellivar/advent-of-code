@@ -2,12 +2,12 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
+const input = _(readLines(2022, 3).map((line) => line.split('')));
+
 const priorities = (arrs) =>
     _.uniq(_.intersection(...arrs)).map((char) =>
         char.match(/[a-z]/) ? char.charCodeAt() - 96 : char.charCodeAt() - 38,
     );
-
-const input = _(readLines(2022, 3).map((line) => line.split('')));
 
 function part1() {
     return input
