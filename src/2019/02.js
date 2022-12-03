@@ -2,9 +2,7 @@ import assert from 'assert';
 import range from 'lodash/range.js';
 import { readLines } from '../lib/read-input.js';
 
-const [input] = readLines(2019, 2).map((opcodes) =>
-    opcodes.split(',').map(Number),
-);
+const [input] = readLines().map((opcodes) => opcodes.split(',').map(Number));
 
 const EXIT = 99;
 const ADD = 1;
@@ -46,11 +44,7 @@ function part2() {
     }
 }
 
-describe('2019 - Day 2', () => {
-    it('part1 is 7594646', () => {
-        assert.strictEqual(part1(), 7594646);
-    });
-    it('part2 is 3376', () => {
-        assert.strictEqual(part2(), 3376);
-    });
+test('2019 - Day 2', () => {
+    assert.strictEqual(part1(), 7594646);
+    assert.strictEqual(part2(), 3376);
 });

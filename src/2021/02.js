@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLines } from '../lib/read-input.js';
 
-const moves = readLines(2021, 2).map((line) =>
+const moves = readLines().map((line) =>
     line.split(' ').map((val) => (Number(val) ? Number(val) : val)),
 );
 
@@ -45,12 +45,7 @@ function part2() {
     return depth * horizontal;
 }
 
-describe('2021 - Day 2', () => {
-    it('part1 is 1654760', () => {
-        assert.strictEqual(part1(), 1654760);
-    });
-
-    it('part2 is 1956047400', () => {
-        assert.strictEqual(part2(), 1956047400);
-    });
+test('2021 - Day 2', () => {
+    assert.strictEqual(part1(), 1654760);
+    assert.strictEqual(part2(), 1956047400);
 });

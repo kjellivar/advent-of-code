@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLines } from '../lib/read-input.js';
 
-const depths = readLines(2021, 1).map(Number);
+const depths = readLines().map(Number);
 
 function part1() {
     const increases = depths
@@ -23,12 +23,7 @@ function part2() {
     return increases;
 }
 
-describe('2021 - Day 1', () => {
-    it('part1 is 1832', () => {
-        assert.strictEqual(part1(), 1832);
-    });
-
-    it('part2 is 1858', () => {
-        assert.strictEqual(part2(), 1858);
-    });
+test('2021 - Day 1', () => {
+    assert.strictEqual(part1(), 1832);
+    assert.strictEqual(part2(), 1858);
 });

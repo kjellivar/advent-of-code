@@ -2,30 +2,21 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const input = _(readLines(2022, 3).map((line) => line.split('')));
+const input = _(readLines().map((line) => line.split('')));
 
 const priorities = (arrs) =>
     _.uniq(_.intersection(...arrs)).map((char) =>
         char.match(/[a-z]/) ? char.charCodeAt() - 96 : char.charCodeAt() - 38,
     );
 
-function part1() {
-    return input
-        .map((line) => _.chunk(line, line.length / 2))
-        .flatMap(priorities)
-        .sum();
-}
+const part1 = input
+    .map((line) => _.chunk(line, line.length / 2))
+    .flatMap(priorities)
+    .sum();
 
-function part2() {
-    return input.chunk(3).flatMap(priorities).sum();
-}
+const part2 = input.chunk(3).flatMap(priorities).sum();
 
-describe(`2022 - Day 3`, () => {
-    it('part1 is 7763', () => {
-        assert.strictEqual(part1(), 7763);
-    });
-
-    it('part2 is 2569', () => {
-        assert.strictEqual(part2(), 2569);
-    });
+test(`2022 - Day 3`, () => {
+    assert.strictEqual(part1, 7763);
+    assert.strictEqual(part2, 2569);
 });

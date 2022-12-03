@@ -2,7 +2,7 @@ import assert from 'assert';
 import range from 'lodash/range.js';
 import { readLines } from '../lib/read-input.js';
 
-const seatIds = readLines(2020, 5)
+const seatIds = readLines()
     .map(getSeatId)
     .sort((a, b) => a - b);
 
@@ -27,17 +27,7 @@ function getSeatId(boardingPass) {
     return parseInt(binary, 2);
 }
 
-describe('2020 - Day 5', () => {
-    it('getSeatId should calculate the right seat id', () => {
-        assert.strictEqual(getSeatId('FBFBBFFRLR'), 357);
-        assert.strictEqual(getSeatId('BFFFBBFRRR'), 567);
-        assert.strictEqual(getSeatId('FFFBBBFRRR'), 119);
-        assert.strictEqual(getSeatId('BBFFBBFRLL'), 820);
-    });
-    it('part1 is 976', () => {
-        assert.strictEqual(lastSeatId(), 976);
-    });
-    it('part2 is 685', () => {
-        assert.strictEqual(findMissingSeatId(), 685);
-    });
+test('2020 - Day 5', () => {
+    assert.strictEqual(lastSeatId(), 976);
+    assert.strictEqual(findMissingSeatId(), 685);
 });

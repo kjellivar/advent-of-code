@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const { sum } = lodash;
-const input = readLines(2021, 9).map((v) => v.split('').map(Number));
+const input = readLines().map((v) => v.split('').map(Number));
 
 /**
 2199943210
@@ -48,12 +48,7 @@ function part2() {
     // terminate when height 9
 }
 
-describe(`2021 - Day 9`, () => {
-    it('part1 is 436', () => {
-        assert.strictEqual(part1(), 436);
-    });
-
-    it('part2 is ?', () => {
-        assert.strictEqual(part2(), undefined);
-    });
+test(`2021 - Day 9`, () => {
+    assert.strictEqual(part1(), 436);
+    assert.strictEqual(part2(), undefined);
 });

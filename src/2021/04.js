@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLineGroups } from '../lib/read-input.js';
 
-const input = readLineGroups(2021, 4);
+const input = readLineGroups();
 const drawOrder = input[0][0].split(',').map(Number);
 const boardsInput = input
     .slice(1)
@@ -63,12 +63,7 @@ function part2() {
     return playBingo().pop();
 }
 
-describe('2021 - Day 4', () => {
-    it('part1 is 6592', () => {
-        assert.strictEqual(part1(), 6592);
-    });
-
-    it('part2 is 31755', () => {
-        assert.strictEqual(part2(), 31755);
-    });
+test('2021 - Day 4', () => {
+    assert.strictEqual(part1(), 6592);
+    assert.strictEqual(part2(), 31755);
 });

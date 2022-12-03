@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const { fill, times, sum } = lodash;
-const input = readLines(2021, 6).flatMap((val) => val.split(',').map(Number));
+const input = readLines().flatMap((val) => val.split(',').map(Number));
 
 function part1() {
     return simulate(80);
@@ -24,12 +24,7 @@ function simulate(days) {
     return sum(fishes);
 }
 
-describe('2021 - Day 6', () => {
-    it('part1 is 380612', () => {
-        assert.strictEqual(part1(), 380612);
-    });
-
-    it('part2 is 1710166656900', () => {
-        assert.strictEqual(part2(), 1710166656900);
-    });
+test('2021 - Day 6', () => {
+    assert.strictEqual(part1(), 380612);
+    assert.strictEqual(part2(), 1710166656900);
 });

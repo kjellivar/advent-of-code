@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLines } from '../lib/read-input.js';
 
-const [line1, line2] = readLines(2020, 13);
+const [line1, line2] = readLines();
 
 function part1() {
     const start = Number(line1);
@@ -34,11 +34,7 @@ function findEarliestTimestamp([[id, offset], ...rest], timeStamp = 0, dt = 1) {
     return rest.length ? findEarliestTimestamp(rest, t[0], t[1] - t[0]) : t[0];
 }
 
-describe('2020 - Day 13', () => {
-    it('part1 is 207', () => {
-        assert.strictEqual(part1(), 207);
-    });
-    it('part2 is 530015546283687', () => {
-        assert.strictEqual(part2(), 530015546283687);
-    });
+test('2020 - Day 13', () => {
+    assert.strictEqual(part1(), 207);
+    assert.strictEqual(part2(), 530015546283687);
 });

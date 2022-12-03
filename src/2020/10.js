@@ -2,7 +2,7 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const input = _(readLines(2020, 10)).map(Number).sortBy().value();
+const input = _(readLines()).map(Number).sortBy().value();
 input.push(input[input.length - 1] + 3);
 input.unshift(0);
 
@@ -39,11 +39,7 @@ function countPaths(start, cache) {
     return paths;
 }
 
-describe('2020 - Day 10', () => {
-    it('part1 is 1836', () => {
-        assert.strictEqual(part1(), 1836);
-    });
-    it('part2 is 43406276662336', () => {
-        assert.strictEqual(part2(), 43406276662336);
-    });
+test('2020 - Day 10', () => {
+    assert.strictEqual(part1(), 1836);
+    assert.strictEqual(part2(), 43406276662336);
 });

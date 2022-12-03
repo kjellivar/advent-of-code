@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLines } from '../lib/read-input.js';
 
-const input = readLines(2021, 3);
+const input = readLines();
 
 function splitLeastAndMostCommonBits(list, pos) {
     const ones = list.filter((val) => val.charAt(pos) === '1');
@@ -31,12 +31,7 @@ function part2() {
     return Number(`0b${co2[0]}`) * Number(`0b${oxygen[0]}`);
 }
 
-describe('2021 - Day 3', () => {
-    it('part1 is 3912944', () => {
-        assert.strictEqual(part1(), 3912944);
-    });
-
-    it('part2 is 4996233', () => {
-        assert.strictEqual(part2(), 4996233);
-    });
+test('2021 - Day 3', () => {
+    assert.strictEqual(part1(), 3912944);
+    assert.strictEqual(part2(), 4996233);
 });

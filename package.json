@@ -7,8 +7,8 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "mocha --timeout 5000 --recursive \"./src\" && eslint .",
-    "test:2022": "mocha --timeout 5000 --recursive \"./src/2022\" && eslint .",
+    "test": "mocha \"./src\" && eslint .",
+    "test:2022": "mocha \"./src/2022\" && eslint .",
     "start": "npm run test"
   },
   "keywords": [

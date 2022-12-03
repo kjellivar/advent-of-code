@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { readLines } from '../lib/read-input.js';
 
-const map = readLines(2020, 3);
+const map = readLines();
 
 function part1() {
     return sled(map, 3, 1);
@@ -39,30 +39,7 @@ function sled(map, vectorX, vectorY) {
     return trees;
 }
 
-describe('2020 - Day 3', () => {
-    const map = [
-        '..##.......',
-        '#...#...#..',
-        '.#....#..#.',
-        '..#.#...#.#',
-        '.#...##..#.',
-        '..#.##.....',
-        '.#.#.#....#',
-        '.#........#',
-        '#.##...#...',
-        '#...##....#',
-        '.#..#...#.#',
-    ];
-    it('sled should count trees we hit', () => {
-        assert.strictEqual(sled(map, 3, 1), 7);
-        assert.strictEqual(sled(map, 0, 1), 3);
-        assert.strictEqual(sled(map, 1, 2), 2);
-        assert.strictEqual(sled(map, 5, 1), 3);
-    });
-    it('part1 is 244', () => {
-        assert.strictEqual(part1(), 244);
-    });
-    it('part2 is 9406609920', () => {
-        assert.strictEqual(part2(), 9406609920);
-    });
+test('2020 - Day 3', () => {
+    assert.strictEqual(part1(), 244);
+    assert.strictEqual(part2(), 9406609920);
 });

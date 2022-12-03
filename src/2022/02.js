@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const rounds = _(
-    readLines(2022, 2)
+    readLines()
         .map((line) => line.split(' '))
         .map(([a, b]) => [a.charCodeAt() - 64, b.charCodeAt() - 87]),
 );
@@ -24,32 +24,23 @@ function score([move, response]) {
     return score;
 }
 
-function part1() {
-    return rounds.map(score).sum();
-}
+const part1 = rounds.map(score).sum();
 
-function part2() {
-    return rounds
-        .map(([move, tactic]) => {
-            let response = move; // draw
-            if (tactic === 1) {
-                // lose
-                response = whatLosesTo.get(move);
-            } else if (tactic === 3) {
-                // win
-                response = [1, 2, 3].find((x) => whatLosesTo.get(x) === move);
-            }
-            return score([move, response]);
-        })
-        .sum();
-}
+const part2 = rounds
+    .map(([move, tactic]) => {
+        let response = move; // draw
+        if (tactic === 1) {
+            // lose
+            response = whatLosesTo.get(move);
+        } else if (tactic === 3) {
+            // win
+            response = [1, 2, 3].find((x) => whatLosesTo.get(x) === move);
+        }
+        return score([move, response]);
+    })
+    .sum();
 
-describe('2022 - Day 2', () => {
-    it('part1 is 9651', () => {
-        assert.strictEqual(part1(), 9651);
-    });
-
-    it('part2 is 10560', () => {
-        assert.strictEqual(part2(), 10560);
-    });
+test('2022 - Day 2', () => {
+    assert.strictEqual(part1, 9651);
+    assert.strictEqual(part2, 10560);
 });

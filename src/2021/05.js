@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 import { LineSegment } from '../lib/line-segment.js';
 
-const input = lodash(readLines(2021, 5))
+const input = lodash(readLines())
     .map((l) => l.split(' -> ').map((coords) => coords.split(',').map(Number)))
     .map((line) => new LineSegment(line));
 
@@ -25,12 +25,7 @@ function solve(filter = () => true) {
         .size();
 }
 
-describe('2021 - Day 5', () => {
-    it('part1 is 6666', () => {
-        assert.strictEqual(part1(), 6666);
-    });
-
-    it('part2 is 19081', () => {
-        assert.strictEqual(part2(), 19081);
-    });
+test('2021 - Day 5', () => {
+    assert.strictEqual(part1(), 6666);
+    assert.strictEqual(part2(), 19081);
 });

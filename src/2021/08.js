@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const { sum } = lodash;
-const input = readLines(2021, 8).map((line) =>
+const input = readLines().map((line) =>
     line
         .split(' | ')
         .map((val) => val.split(' ').map((val) => val.split('').sort())),
@@ -53,12 +53,7 @@ function findSuperSetNumber(list, length, common, filter = () => true) {
         );
 }
 
-describe(`2021 - Day 8`, () => {
-    it('part1 is 349', () => {
-        assert.strictEqual(part1(), 349);
-    });
-
-    it('part2 is 1070957', () => {
-        assert.strictEqual(part2(), 1070957);
-    });
+test(`2021 - Day 8`, () => {
+    assert.strictEqual(part1(), 349);
+    assert.strictEqual(part2(), 1070957);
 });

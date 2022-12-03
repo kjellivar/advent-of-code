@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const { sum } = lodash;
-const input = readLines(2021, 10).map((val) => Array.from(val));
+const input = readLines().map((val) => Array.from(val));
 
 const charScore = new Map([
     [')', 3],
@@ -59,12 +59,7 @@ function part2() {
     return incomplete[Math.floor(incomplete.length / 2)];
 }
 
-describe(`2021 - Day 10`, () => {
-    it('part1 is 288291', () => {
-        assert.strictEqual(part1(), 288291);
-    });
-
-    it('part2 is 820045242', () => {
-        assert.strictEqual(part2(), 820045242);
-    });
+test(`2021 - Day 10`, () => {
+    assert.strictEqual(part1(), 288291);
+    assert.strictEqual(part2(), 820045242);
 });

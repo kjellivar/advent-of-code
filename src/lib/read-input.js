@@ -6,8 +6,8 @@ import fs from 'fs';
  * @param {number} day
  * @returns {Array<string>}
  */
-export function readLines(year, day) {
-    return read(year, day).split('\n');
+export function readLines() {
+    return read().split('\n');
 }
 
 /**
@@ -37,8 +37,8 @@ export function readLines(year, day) {
  * @param {number} day
  * @returns {Array<Array<string>>}
  */
-export function readLineGroups(year, day) {
-    return read(year, day)
+export function readLineGroups() {
+    return read()
         .split('\n\n')
         .map((group) => group.split('\n'));
 }
@@ -54,7 +54,10 @@ export function readLineGroups(year, day) {
  * @param {number} day
  * @returns {string}
  */
-function read(year, day) {
+function read() {
+    const callerLoc = getCallerFile().split('/');
+    const year = callerLoc.at(-2);
+    const day = callerLoc.at(-1).replace('.js', '');
     const path = `./inputs/${year}/${String(day).padStart(2, '0')}.txt`;
     try {
         return fs.readFileSync(path, 'utf8');
@@ -66,4 +69,34 @@ function read(year, day) {
         );
         return fs.readFileSync(`./input.txt`, 'utf8');
     }
+}
+
+/**
+ * Finds file path of caller
+ *
+ * @returns {string}
+ */
+function getCallerFile() {
+    const originalFunc = Error.prepareStackTrace;
+
+    let callerfile;
+    try {
+        const err = new Error();
+        let currentfile;
+
+        Error.prepareStackTrace = (_, stack) => stack;
+
+        currentfile = err.stack.shift().getFileName();
+
+        while (err.stack.length) {
+            callerfile = err.stack.shift().getFileName();
+
+            if (currentfile !== callerfile) break;
+        }
+        // eslint-disable-next-line no-empty
+    } catch (e) {}
+
+    Error.prepareStackTrace = originalFunc;
+
+    return callerfile;
 }

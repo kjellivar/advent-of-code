@@ -2,7 +2,7 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const input = readLines(2020, 9).map(Number);
+const input = readLines().map(Number);
 
 function part1() {
     const entries = input.slice(25).entries();
@@ -36,11 +36,7 @@ function hasSum(arr, sumToFind) {
     return false;
 }
 
-describe('2020 - Day 9', () => {
-    it('part1 is 23278925', () => {
-        assert.strictEqual(part1(), 23278925);
-    });
-    it('part2 is 4011064', () => {
-        assert.strictEqual(part2(), 4011064);
-    });
+test('2020 - Day 9', () => {
+    assert.strictEqual(part1(), 23278925);
+    assert.strictEqual(part2(), 4011064);
 });

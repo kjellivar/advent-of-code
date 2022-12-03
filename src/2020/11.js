@@ -3,7 +3,7 @@ import { readLines } from '../lib/read-input.js';
 
 const EMPTY = 'L';
 const OCCUPIED = '#';
-const input = readLines(2020, 11).map((line) => line.split(''));
+const input = readLines().map((line) => line.split(''));
 
 function part1() {
     let prevSeatings = runSimulation(input);
@@ -110,11 +110,7 @@ function part2() {
 }
 
 // skip until a faster solution is found
-describe.skip('2020 - Day 11', () => {
-    it('part1 is 2238', () => {
-        assert.strictEqual(part1(), 2238);
-    });
-    it('part2 is 2013', () => {
-        assert.strictEqual(part2(), 2013);
-    });
+test.skip('2020 - Day 11', () => {
+    assert.strictEqual(part1(), 2238);
+    assert.strictEqual(part2(), 2013);
 });

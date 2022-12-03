@@ -5,7 +5,7 @@ import { readLineGroups } from '../lib/read-input.js';
  * @returns Array<Object>
  */
 function getInput() {
-    return readLineGroups(2020, 4).map(
+    return readLineGroups().map(
         (group) =>
             new Map(
                 group
@@ -70,11 +70,7 @@ function part2() {
     return getInput().filter((pass) => validate(pass)).length;
 }
 
-describe('2020 - Day 4', () => {
-    it('part1 is 190', () => {
-        assert.strictEqual(part1(), 190);
-    });
-    it('part2 is 121', () => {
-        assert.strictEqual(part2(), 121);
-    });
+test('2020 - Day 4', () => {
+    assert.strictEqual(part1(), 190);
+    assert.strictEqual(part2(), 121);
 });

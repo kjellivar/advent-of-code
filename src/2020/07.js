@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const children = new Map(
-    readLines(2020, 7).map((line) => {
+    readLines().map((line) => {
         const [color, rest] = line.split(' bags contain ');
         const contents = rest
             .split(', ')
@@ -52,11 +52,7 @@ function collectBags([opened, ...rest], store) {
     return [opened].concat(bags.length ? collectBags(bags, store) : []);
 }
 
-describe('2020 - Day 7', () => {
-    it('part1 is 213', () => {
-        assert.strictEqual(part1(), 213);
-    });
-    it('part2 is 38426', () => {
-        assert.strictEqual(part2(), 38426);
-    });
+test('2020 - Day 7', () => {
+    assert.strictEqual(part1(), 213);
+    assert.strictEqual(part2(), 38426);
 });
