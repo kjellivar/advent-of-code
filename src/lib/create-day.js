@@ -15,8 +15,12 @@ try {
         2,
         'date needs to be of length 2 (zero-padded)',
     );
-    fs.copyFileSync('./template.js', `./src/${year}/${day}.js`);
+    const jsPath = `./src/${year}/${day}.js`;
+    fs.copyFileSync('./template.js', jsPath);
+    console.log(`Created file: ${jsPath}`);
+    const inputPath = `./inputs/${year}/${day}.txt`;
     fs.closeSync(fs.openSync(`./inputs/${year}/${day}.txt`, 'w'));
+    console.log(`Created file: ${inputPath}`);
 } catch (e) {
     console.error(`error: ${e.message}`);
 }
