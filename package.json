@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha \"./src\" && eslint .",
     "test:2022": "mocha \"./src/2022\" && eslint .",
-    "start": "npm run test"
+    "start": "npm run test",
+    "new": "node ./src/lib/create-day.js"
   },
   "keywords": [
     "advent"
