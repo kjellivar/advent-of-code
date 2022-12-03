@@ -1,4 +1,5 @@
 import assert from 'assert';
+import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 // eslint-disable-next-line no-unused-vars
