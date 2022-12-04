@@ -12,7 +12,7 @@ const input = readLines()
     );
 
 const part1 = input.filter(
-    ([p1, p2]) => !_.difference(p1, p2).length || !_.difference(p2, p1).length,
+    ([p1, p2]) => !(_.difference(p1, p2).length && _.difference(p2, p1).length),
 ).length;
 
 const part2 = input.filter((pair) => _.intersection(...pair).length).length;
