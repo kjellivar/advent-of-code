@@ -3,13 +3,8 @@ import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const input = readLines()
-    .map((line) => line.split(','))
-    .map((pairs) =>
-        pairs.map((pair) => {
-            const [to, from] = pair.split('-').map(Number);
-            return _.range(to, from + 1);
-        }),
-    );
+    .map((line) => line.split(',').map((pairs) => pairs.split('-').map(Number)))
+    .map((pair) => pair.map(([from, to]) => _.range(from, to + 1)));
 
 const part1 = input.filter(
     ([p1, p2]) => !(_.difference(p1, p2).length && _.difference(p2, p1).length),
