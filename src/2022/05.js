@@ -16,10 +16,7 @@ function runProcedure(multiMove = false) {
         const removed = crates[from].splice(crates[from].length - num, num);
         crates[to].push(...(multiMove ? removed : removed.reverse()));
     }
-    return crates
-        .filter((c) => c.length)
-        .map((c) => c.pop())
-        .join('');
+    return crates.map((c) => c.pop()).join('');
 }
 
 const part1 = runProcedure();
