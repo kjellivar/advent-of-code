@@ -12,10 +12,10 @@ const getCrates = () =>
 
 function runProcedure(multiMove = false) {
     const crates = getCrates();
-    for (const [num, from, to] of procedure) {
+    procedure.forEach(([num, from, to]) => {
         const removed = crates[from].splice(crates[from].length - num, num);
         crates[to].push(...(multiMove ? removed : removed.reverse()));
-    }
+    });
     return crates.map((c) => c.pop()).join('');
 }
 
