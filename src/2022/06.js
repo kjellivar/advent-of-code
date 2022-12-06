@@ -1,12 +1,11 @@
 import assert from 'assert';
-import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
 const data = readLines().pop().split('');
 
 function findMarkerOfSize(n) {
     for (let i = n - 1; i < data.length; i++)
-        if (_.uniq(data.slice(i - n, i)).length === n) return i;
+        if (new Set(data.slice(i - n, i)).size === n) return i;
 }
 
 const part1 = findMarkerOfSize(4);
