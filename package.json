@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha \"./src\" && eslint .",
-    "test:2022": "mocha \"./src/2022\" && eslint .",
+    "test:2022": "nodemon --exec mocha \"./src/2022\"",
     "start": "npm run test",
     "new": "node ./src/lib/create-day.js"
   },
@@ -25,6 +25,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "mocha": "10.1.0",
+    "nodemon": "^2.0.20",
     "prettier": "2.8.0"
   }
 }
