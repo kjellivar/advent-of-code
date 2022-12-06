@@ -2,19 +2,15 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const stream = readLines().pop().split('');
+const data = readLines().pop().split('');
 
-function findMarker(length) {
-    for (let i = length - 1; i < stream.length; i++) {
-        const marker = stream.slice(i - length, i);
-        if (_.uniq(marker).length === length) {
-            return i;
-        }
-    }
+function findMarkerOfSize(n) {
+    for (let i = n - 1; i < data.length; i++)
+        if (_.uniq(data.slice(i - n, i)).length === n) return i;
 }
 
-const part1 = findMarker(4);
-const part2 = findMarker(14);
+const part1 = findMarkerOfSize(4);
+const part2 = findMarkerOfSize(14);
 
 test('2022 - Day 06', () => {
     assert.strictEqual(part1, 1912);
