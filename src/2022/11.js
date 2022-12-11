@@ -20,18 +20,16 @@ class Monkey {
 }
 
 const readMonkeys = () =>
-    readLineGroups()
-        .map((g) => g.map((s) => s.trim()))
-        .map((group) => {
-            const items = group[1].match(/\d+/g).map(Number);
-            const op = eval('(old) => ' + group[2].match(/old.+/).pop());
-            const [div, monk1, monk2] = [3, 4, 5].map((i) =>
-                Number(group[i].match(/\d+/).pop()),
-            );
-            return new Monkey(items, op, div, (n) =>
-                n % div === 0 ? monk1 : monk2,
-            );
-        });
+    readLineGroups().map((group) => {
+        const items = group[1].match(/\d+/g).map(Number);
+        const op = eval('(old) => ' + group[2].match(/old.+/).pop());
+        const [div, monk1, monk2] = [3, 4, 5].map((i) =>
+            Number(group[i].match(/\d+/).pop()),
+        );
+        return new Monkey(items, op, div, (n) =>
+            n % div === 0 ? monk1 : monk2,
+        );
+    });
 
 function findMonkeyBusinessLevel(monkeys, rounds, worryReducer) {
     _.times(rounds, () =>
