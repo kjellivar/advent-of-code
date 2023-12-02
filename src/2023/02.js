@@ -2,16 +2,14 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const input = _(readLines())
-    .map((line) => line.split(': '))
-    .map(([game, sets]) => [
-        Number(game.match(/\d+/).pop()),
-        {
-            reds: sets.match(/\d+(?= red)/g).map(Number),
-            greens: sets.match(/\d+(?= green)/g).map(Number),
-            blues: sets.match(/\d+(?= blue)/g).map(Number),
-        },
-    ]);
+const input = _(readLines()).map((line) => [
+    Number(line.match(/(?<=game )\d+/gi).pop()),
+    {
+        reds: line.match(/\d+(?= red)/g).map(Number),
+        greens: line.match(/\d+(?= green)/g).map(Number),
+        blues: line.match(/\d+(?= blue)/g).map(Number),
+    },
+]);
 
 function part1() {
     return input
