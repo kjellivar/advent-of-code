@@ -2,7 +2,7 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const lines = _(readLines());
+const lines = readLines();
 
 const numMap = new Map([
     ['one', 'o1e'],
@@ -20,7 +20,7 @@ function part1(input = lines) {
     return input
         .map((line) => line.split('').filter(Number))
         .map((numbers) => Number(numbers.at(0) + numbers.at(-1)))
-        .sum();
+        .reduce(_.add);
 }
 
 function part2() {
