@@ -6,43 +6,34 @@ const input = _(readLines())
     .map((line) => line.split(': '))
     .map(([game, sets]) => [
         Number(game.match(/\d+/).pop()),
-        sets.split('; ').map(
-            (set) =>
-                new Map(
-                    set
-                        .split(', ')
-                        .map((set) => set.split(' '))
-                        .map(([num, color]) => [color, Number(num)]),
-                ),
-        ),
+        {
+            reds: sets.match(/\d+(?= red)/g).map(Number),
+            greens: sets.match(/\d+(?= green)/g).map(Number),
+            blues: sets.match(/\d+(?= blue)/g).map(Number),
+        },
     ]);
 
 function part1() {
     return input
-        .filter(([_, sets]) =>
-            sets.every(
-                (set) =>
-                    (set.get('red') ?? 0) <= 12 &&
-                    (set.get('green') ?? 0) <= 13 &&
-                    (set.get('blue') ?? 0) <= 14,
-            ),
+        .filter(
+            ([_id, game]) =>
+                game.reds.every((r) => r <= 12) &&
+                game.greens.every((g) => g <= 13) &&
+                game.blues.every((b) => b <= 14),
         )
-        .map(([game]) => game)
+        .map(([id]) => id)
         .sum();
 }
 
 function part2() {
     return input
-        .map(([_game, sets]) => {
-            const mins = [0, 0, 0]; // RGB
-            sets.forEach((set) => {
-                ['red', 'green', 'blue'].forEach((col, i) => {
-                    const num = set.get(col) ?? 0;
-                    if (num > mins[i]) mins[i] = num;
-                });
-            });
-            return mins.reduce((a, b) => a * b);
-        })
+        .map(([_id, game]) =>
+            [
+                _(game.reds).max(),
+                _(game.greens).max(),
+                _(game.blues).max(),
+            ].reduce((a, b) => a * b),
+        )
         .sum();
 }
 
