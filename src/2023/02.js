@@ -2,11 +2,11 @@ import assert from 'assert';
 import _ from 'lodash';
 import { readLines } from '../lib/read-input.js';
 
-const input = _(readLines()).map((line) => [
+const input = readLines().map((line) => [
     Number(line.match(/(?<=game )\d+/gi).pop()),
-    _(line.match(/\d+(?= red)/g).map(Number)),
-    _(line.match(/\d+(?= green)/g).map(Number)),
-    _(line.match(/\d+(?= blue)/g).map(Number)),
+    line.match(/\d+(?= red)/g).map(Number),
+    line.match(/\d+(?= green)/g).map(Number),
+    line.match(/\d+(?= blue)/g).map(Number),
 ]);
 
 function part1() {
@@ -18,15 +18,13 @@ function part1() {
                 blues.every((b) => b <= 14),
         )
         .map(([id]) => id)
-        .sum();
+        .reduce(_.add);
 }
 
 function part2() {
     return input
-        .map(([_id, ...rgbs]) =>
-            rgbs.map((col) => col.max()).reduce((a, b) => a * b),
-        )
-        .sum();
+        .map(([_id, ...rgbs]) => rgbs.map(_.max).reduce(_.multiply))
+        .reduce(_.add);
 }
 
 test('2023 - Day 02', () => {
