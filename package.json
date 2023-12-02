@@ -7,6 +7,7 @@
     "node": ">=16"
   },
   "scripts": {
+    "lint:fix": "eslint . --fix",
     "test": "mocha \"./src\" && eslint .",
     "test:2022": "nodemon --exec mocha \"./src/2022\"",
     "start": "npm run test",
